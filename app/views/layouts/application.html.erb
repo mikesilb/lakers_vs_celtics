@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Daytripper1</title>
+    <title>Lakers versus Celtics</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -9,6 +9,16 @@
   </head>
 
   <body>
+    <% flash.each do |type, message| %>
+      <div>
+        <%= message %>
+      </div>
+    <% end %>
+    <p class="navbar-text pull-right">
+      <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.first_name %></strong>.
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <% end %>
     <%= yield %>
   </body>
 </html>

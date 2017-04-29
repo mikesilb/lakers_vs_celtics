@@ -9,6 +9,7 @@ gem 'listen'
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'devise'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'
   gem 'shoulda'

@@ -18,6 +18,8 @@ end
 
 group :test do
   gem 'launchy', require: false
+  gem 'coveralls', require: false
+  gem 'database_cleaner'
 end
 
 group :production do

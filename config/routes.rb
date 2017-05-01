@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :destroy]
 
-   root "static_pages#index"
+  root "static_pages#index"
   resources :nbafinals do
     # resources :reviews, only: [:create]
   end

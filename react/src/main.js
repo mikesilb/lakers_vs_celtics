@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 $(function() {
   ReactDOM.render(
-    <h1>REACT COMPONENT HERE!!!</h1>,
+    <h1>react component here</h1>,
     document.getElementById('app')
   );
 });

@@ -1,5 +1,4 @@
 require "rails_helper"
-
 feature "visitor can view the listed NBA finals" do
   let!(:admin)  { FactoryGirl.create(:user, role: "admin") }
   let!(:nbafinal)  { FactoryGirl.create(:nbafinal) }

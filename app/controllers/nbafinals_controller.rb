@@ -54,7 +54,7 @@ class NbafinalsController < ApplicationController
   #     render :new
   #   end
   # end
-  #
+
   def destroy
     @color = Color.find(params[:id])
     @color.destroy
@@ -75,5 +75,4 @@ class NbafinalsController < ApplicationController
   def color_params_update
     params.require(:color).permit(:nickname)
   end
-
 end

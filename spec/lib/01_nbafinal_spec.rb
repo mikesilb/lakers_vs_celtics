@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Nba_final do
+describe Nbafinal do
   subject { described_class.new }
 
   it "is valid with valid attributes_and_mvp" do

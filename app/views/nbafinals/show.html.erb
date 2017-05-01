@@ -1,0 +1,14 @@
+<div class="username">
+  <h1><%= @nbafinal.year %></h1>
+  <% if @nbafinal.champion == "Celtics" %>
+    <% team_city = "Boston" %>
+  <% else %>
+    <% team_city = "Los Angeles" %>
+  <% end %>
+  <h3>The <%= team_city %> <%= @nbafinal.champion %> won the <%= @nbafinal.year %> NBA Championship in
+  <%= @nbafinal.num_games %> games. </h3>
+  <% if @nbafinal.mvp != nil %>
+    <h3><%= @nbafinal.mvp %> was the MVP of the series.</h3>
+  <% end %>
+  <%= link_to "NBA Finals Index Page", nbafinals_path %>
+</div>

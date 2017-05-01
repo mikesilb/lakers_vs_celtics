@@ -1,5 +1,4 @@
 require "rails_helper"
-
 feature "visitor can view the details of a specific NBA Finals" do
   let!(:nbafinal)  { FactoryGirl.create(:nbafinal) }
   scenario "from the individual NBA Finals show page" do

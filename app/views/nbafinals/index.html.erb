@@ -1,0 +1,7 @@
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to "See All Users", users_path %>
+<% end %>
+
+<% @nbafinals.each do |finals| %>
+  <h1><%= link_to finals.year, nbafinal_path(finals) %></h1>
+<% end %>

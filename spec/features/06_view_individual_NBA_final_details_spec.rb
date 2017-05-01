@@ -1,7 +1,4 @@
 require "rails_helper"
-# require_relative "../factories/user_factory"
-# require_relative "../factories/color_factory"
-# require_relative "../factories/review_factory"
 
 feature "visitor can view the details of a specific NBA Finals" do
   let!(:nbafinal)  { FactoryGirl.create(:nbafinal) }

@@ -1,0 +1,42 @@
+<h1> New NBA Finals </h1>
+
+<% if @nbafinal.errors.empty? %>
+  <div>
+  <%= "Finals added successfully" %>
+  </div>
+<% end %>
+
+<% unless @nbafinal.errors.empty? %>
+  <div>
+    <%= @nbafinal.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
+<%= form_for(@nbafinal) do |f| %>
+  <div class="field">
+    <%= f.label :year, "Year" %><br />
+    <%= f.text_field :year %>
+  </div>
+
+  <div class="field">
+    <%= f.label :num_games, "Number of Games" %><br />
+    <%= f.text_area :num_games%>
+  </div>
+
+  <div class="field">
+    <%= f.label :champion, "NBA Champion" %><br />
+    <%= f.text_area :champion%>
+  </div>
+
+  <div class="field">
+    <%= f.label :mvp, "MVP" %><br />
+    <%= f.text_area :mvp%>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit value = "Add Finals series"%>
+  </div>
+<% end %>
+
+<p><%= link_to "Back", nbafinals_path %></p>

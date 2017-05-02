@@ -1,5 +1,6 @@
 <% if user_signed_in? && current_user.admin? %>
   <%= link_to "See All Users", users_path %>
+  <%= link_to "Add new NBA Finals series", new_nbafinal_path %>
 <% end %>
 
 <% @nbafinals.each do |finals| %>

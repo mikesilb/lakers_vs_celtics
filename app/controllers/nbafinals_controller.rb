@@ -20,24 +20,23 @@ class NbafinalsController < ApplicationController
     # @review_ratings = Review::RATINGS
     # @text_color = text_color(@color.hex_code)
   end
-  #
-  # def new
-  #   @color = Color.new
-  # end
-  #
-  # def create
-  #   @color = Color.new(color_params_create)
-  #   @color.hex_code = @color.hex_code.upcase
-  #   @color.user = current_user
-  #
-  #   if @color.save
-  #     flash[:success] = "Color added successfully"
-  #     redirect_to color_path(@color)
-  #   else
-  #     flash[:errors] = @color.errors.full_messages.to_sentence
-  #     render :new
-  #   end
-  # end
+
+  def new
+    @nbafinal = Nbafinal.new
+  end
+
+  def create
+    @nbafinal = Nbafinal.new(nbafinal_params_create)
+    # @color.hex_code = @color.hex_code.upcase
+    # @color.user = current_user
+    if @nbafinal.save
+      flash[:success] = "Finals added successfully"
+      redirect_to nbafinal_path(@nbafinal)
+    else
+      flash[:errors] = @nbafinal.errors.full_messages.to_sentence
+      render :new
+    end
+  end
   #
   # def edit
   #   @color = Color.find(params[:id])
@@ -68,11 +67,11 @@ class NbafinalsController < ApplicationController
 
   private
 
-  def color_params_create
-    params.require(:color).permit(:hex_code, :nickname)
+  def nbafinal_params_create
+    params.require(:nbafinal).permit(:year, :num_games, :champion, :mvp)
   end
 
-  def color_params_update
-    params.require(:color).permit(:nickname)
+  def nbafinal_params_update
+    params.require(:nbafinal).permit(:year, :num_games, :champion, :mvp)
   end
 end

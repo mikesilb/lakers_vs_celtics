@@ -59,8 +59,9 @@ feature "Admins can add a new NBA Final series" do
 end
 
 feature "Admins can add a new NBA Final series" do
-  let!(:admin)  { FactoryGirl.create(:user, role: "admin") }
-  let!(:nbafinal)  { FactoryGirl.create(:nbafinal) }
+
+  let!(:admin) { FactoryGirl.create(:user, role: "admin") }
+  let!(:nbafinal) { FactoryGirl.create(:nbafinal) }
 
   scenario "but are not able to enter a Finals Year already in the database" do
     login_as(admin)

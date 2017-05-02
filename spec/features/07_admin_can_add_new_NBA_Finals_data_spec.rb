@@ -59,7 +59,6 @@ feature "Admins can add a new NBA Final series" do
 end
 
 feature "Admins can add a new NBA Final series" do
-
   let!(:admin)  { FactoryGirl.create(:user, role: "admin") }
   let!(:nbafinal)  { FactoryGirl.create(:nbafinal) }
 

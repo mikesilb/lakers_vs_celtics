@@ -20,7 +20,7 @@ class NbafinalsController < ApplicationController
     # @review_ratings = Review::RATINGS
     # @text_color = text_color(@color.hex_code)
   end
-  #
+
   def new
     @nbafinal = Nbafinal.new
   end

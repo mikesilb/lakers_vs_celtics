@@ -22,6 +22,18 @@
       <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %>
       <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %>
       <% end %>
+      <header>
+        <div class="nav">
+          <ul id = navbar>
+            <li class="Home"><a href="#">Home</a></li>
+            <li> <%= link_to "NBA Finals", nbafinals_path %> </li>
+            <li class="Games"><a href="#">Games</a></li>
+            <li class="Teams"><a href="#">Teams</a></li>
+            <li class="Players"><a href="#">Players</a></li>
+            <li class="The Rivalry"><a href="#">'The Rivalry'</a></li>
+          </ul>
+        </div>
+      </header>
     <%= yield %>
   </body>
 </html>

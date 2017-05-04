@@ -5,4 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Nbafinal.create!(year: 2010, champion: "Lakers", num_games: 7, mvp: "Kobe Bryant")
+Nbafinal.create!(year: 2010, champion: "Lakers", numgames: 7, mvp: "Kobe Bryant")

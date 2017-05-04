@@ -5,7 +5,7 @@ feature "visitor can view the details of a specific NBA Finals" do
     visit nbafinal_path(nbafinal)
 
     expect(page).to have_content nbafinal.year
-    expect(page).to have_content nbafinal.num_games
+    expect(page).to have_content nbafinal.numgames
     expect(page).to have_content nbafinal.champion
   end
 
@@ -14,7 +14,7 @@ feature "visitor can view the details of a specific NBA Finals" do
     first(:link, nbafinal.year).click
 
     expect(page).to have_content nbafinal.year
-    expect(page).to have_content nbafinal.num_games
+    expect(page).to have_content nbafinal.numgames
     expect(page).to have_content nbafinal.champion
   end
 

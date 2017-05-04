@@ -1,10 +1,11 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App'
 
 $(function() {
   ReactDOM.render(
-    <h1>react component here</h1>,
-    document.getElementById('app')
+    <App />,
+    document.getElementById('finals-list')
   );
 });

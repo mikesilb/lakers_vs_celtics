@@ -68,10 +68,10 @@ class NbafinalsController < ApplicationController
   private
 
   def nbafinal_params_create
-    params.require(:nbafinal).permit(:year, :num_games, :champion, :mvp)
+    params.require(:nbafinal).permit(:year, :numgames, :champion, :mvp)
   end
 
   def nbafinal_params_update
-    params.require(:nbafinal).permit(:year, :num_games, :champion, :mvp)
+    params.require(:nbafinal).permit(:year, :numgames, :champion, :mvp)
   end
 end

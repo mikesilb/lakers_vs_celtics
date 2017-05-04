@@ -1,2 +1,156 @@
 // @import "*";
+body {
+   font-family: Helvetica, Geneva, Arial, sans-serif;
+   font-size: large;
+   font-color: #fff;
+   background-color: #000;
+   background-image: image-url("stream-celtics-lakers.jpg");
+   background-repeat: no-repeat;
+}
 
+a:link, a:active, a:visited {
+   color: #purple;
+}
+
+input {
+   margin-bottom: 5px;
+}
+
+p {
+   line-height: 150%;
+}
+
+strong {
+  color: blue;
+}
+div#finals-list {
+  border: 2px solid lightgrey;
+  color: orange;
+  font-family: Helvetica;
+  position: absolute;
+  width: 1000px;
+  text-align: center;
+  display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.85;
+  padding: 0 5px;
+  z-index: 100;
+  margin-top: 100px;
+}
+
+div#eachfinals {
+  border: 2px solid lightgrey;
+  color: orange;
+  font-family: Helvetica;
+  position: absolute;
+  width: 70%;
+  text-align: left;
+  display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.85;
+  padding: 0 5px;
+  z-index: 100;
+  margin-top: 30px;
+}
+
+span#nbafinalyears {
+  display: inline-block;
+}
+div#userlink{
+  margin-bottom: 20px;
+}
+div#container {
+   width: 760px;
+   margin: 0 auto;
+}
+
+div#header {
+   text-align: center;
+   padding-bottom: 15px;
+}
+
+div#content {
+   float: left;
+   width: 450px;
+   padding: 10px;
+}
+
+div#content h3 {
+   margin-top: 15px;
+}
+
+div#userlist {
+  margin-top: 70px;
+  margin-right: 50%;
+  border: 2px solid lightgrey;
+  color: orange;
+  font-family: Helvetica;
+  position: absolute;
+  width: 55%;
+  text-align: left;
+  display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.85;
+  padding: 0 5px;
+  z-index: 100;
+
+}
+
+ul#navbar {
+  width: 100%;
+  float: left;
+  margin: 0 0 0.5em 0;
+  padding: 0;
+  list-style: none;
+  background-color: #DA9D0A;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+#navbar li {
+  float: left;
+}
+
+#navbar li a {
+  display: block;
+  padding: 8px 47px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #088050;
+  border-right: 1px solid #ccc;
+}
+
+#nav li a:hover {
+  color: #c00;
+  background-color: #fff;
+}
+
+ul#books {
+   list-style-type: none;
+}
+
+ul#books li {
+   line-height: 140%;
+}
+
+div#sidebar {
+   width: 200px;
+   margin-left: 480px;
+}
+
+ul#subjects {
+   width: 700px;
+   text-align: center;
+   padding: 5px;
+   background-color: #ececec;
+   border: 1px solid #ccc;
+   margin-bottom: 20px;
+}
+
+ul#subjects li {
+   display: inline;
+   padding-left: 5px;
+}

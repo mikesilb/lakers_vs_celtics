@@ -1,8 +1,13 @@
+<div id="userlink">
 <% if user_signed_in? && current_user.admin? %>
   <%= link_to "See All Users", users_path %>
-  <%= link_to "Add new NBA Finals series", new_nbafinal_path %>
 <% end %>
+</div>
+<span id=nbafinalyears>
+  <% @nbafinals.each do |finals| %>
+  <h3><%= link_to finals.year, nbafinal_path(finals) %></h3>
+<% end %>
+</span>
 
-<% @nbafinals.each do |finals| %>
-  <h1><%= link_to finals.year, nbafinal_path(finals) %></h1>
-<% end %>
+<div id=finals-list>
+</div>

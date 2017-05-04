@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :nbafinal do
     year 2010
-    num_games 7
+    numgames 7
     champion 'Lakers'
     mvp 'Kobe Bryant'
   end

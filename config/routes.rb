@@ -3,7 +3,14 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :destroy]
 
-  root "static_pages#index"
+  root "nbafinals#index"
+
+  namespace :api do
+    namespace :v1 do
+      resources :nbafinals, only: [:index, :show, :create]
+    end
+  end
+
   resources :nbafinals do
     # resources :reviews, only: [:create]
   end

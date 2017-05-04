@@ -5,10 +5,12 @@
   <% else %>
     <% team_city = "Los Angeles" %>
   <% end %>
-  <h3>The <%= team_city %> <%= @nbafinal.champion %> won the <%= @nbafinal.year %> NBA Championship in
-  <%= @nbafinal.num_games %> games. </h3>
-  <% if @nbafinal.mvp != nil %>
-    <h3><%= @nbafinal.mvp %> was the MVP of the series.</h3>
-  <% end %>
+  <div id="eachfinals">
+    <h3>The <%= team_city %> <%= @nbafinal.champion %> won the <%= @nbafinal.year %> NBA Championship in
+      <%= @nbafinal.numgames %> games. </h3>
+      <% if @nbafinal.mvp != nil %>
+      <h3><%= @nbafinal.mvp %> was the MVP of the series.</h3>
+      <% end %>
+    </h3>
   <%= link_to "NBA Finals Index Page", nbafinals_path %>
 </div>

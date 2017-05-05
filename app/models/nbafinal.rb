@@ -5,4 +5,5 @@ class Nbafinal < ApplicationRecord
   validates :numgames, presence: true,
   numericality: { only_integer: true, greater_than_or_equal_to: 4, less_than_or_equal_to: 7 }
   validates :champion, presence: true, format: { with: type_regex }
+  has_many :reviews
 end

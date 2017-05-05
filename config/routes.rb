@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   end
 
   resources :nbafinals do
-    # resources :reviews, only: [:create]
+    resources :reviews, only: [:new, :create, :update, :destroy]
   end
 
-  # resources :reviews, only: [:edit, :update, :destroy]
+  resources :reviews, only: [:edit, :update, :destroy]
   #
   # get '/api/colors', to: "colors#data"
   # get '/api/reviews', to: "reviews#data"

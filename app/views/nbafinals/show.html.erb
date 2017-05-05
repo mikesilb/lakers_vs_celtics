@@ -12,5 +12,45 @@
       <h3><%= @nbafinal.mvp %> was the MVP of the series.</h3>
       <% end %>
     </h3>
+  </div>
+  <div id="reviewform">
+    <% if user_signed_in? %>
+      <%= form_for [ @nbafinal, @review ] do |f| %>
+        <div class="field">
+          <%= f.label :rating %>
+          <%= f.select :rating, @review_ratings %>
+        </div>
+
+        <div class="field">
+          <%= f.label :body, "Review" %>
+          <%= f.text_area :body %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit value="Submit Review" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+<h4>Reviews</h4>
+  <% @nbafinal.reviews.each do |review| %>
+    <% if user_signed_in? %>
+      <% if current_user == review.user %>
+        <%= link_to "Edit Review", edit_review_path(review) %>
+      <% end %>
+      <% if current_user.id == review.user_id && current_user.admin? %>
+        |
+      <% end %>
+      <% if current_user.admin? %>
+        <%= link_to "Delete Review", review, method: :delete %>
+      <% end %>
+    <% end %>
+    <div id="vote"></div>
+    <p>Rating: <%= review.rating %></p>
+    <p>Review: <%= review.body %></p>
+    <p><%= review.created_at.strftime("%B %d, %Y") %></p>
+    <hr/>
+  <% end %>
+
   <%= link_to "NBA Finals Index Page", nbafinals_path %>
-</div>

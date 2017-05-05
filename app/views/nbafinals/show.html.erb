@@ -5,6 +5,7 @@
   <% else %>
     <% team_city = "Los Angeles" %>
   <% end %>
+  <div id="nbafinalshowpage">
   <div id="eachfinals">
     <h3>The <%= team_city %> <%= @nbafinal.champion %> won the <%= @nbafinal.year %> NBA Championship in
       <%= @nbafinal.numgames %> games. </h3>
@@ -33,24 +34,28 @@
     <% end %>
   </div>
 
-<h4>Reviews</h4>
-  <% @nbafinal.reviews.each do |review| %>
-    <% if user_signed_in? %>
-      <% if current_user == review.user %>
-        <%= link_to "Edit Review", edit_review_path(review) %>
+<div id=reviewlist>
+  <h4>Reviews</h4>
+    <% @nbafinal.reviews.each do |review| %>
+      <% if user_signed_in? %>
+        <% if current_user == review.user %>
+          <%= link_to "Edit Review", edit_review_path(review) %>
+        <% end %>
+        <% if current_user.id == review.user_id && current_user.admin? %>
+          |
+        <% end %>
+        <% if current_user.admin? %>
+          <%= link_to "Delete Review", review, method: :delete %>
+        <% end %>
       <% end %>
-      <% if current_user.id == review.user_id && current_user.admin? %>
-        |
-      <% end %>
-      <% if current_user.admin? %>
-        <%= link_to "Delete Review", review, method: :delete %>
-      <% end %>
+      <div id="vote"></div>
+      <p>Rating: <%= review.rating %></p>
+      <p>Review: <%= review.body %></p>
+      <p><%= review.created_at.strftime("%B %d, %Y") %></p>
+      <p>Review made by <%= review.user.first_name %> <%= review.user.last_name %>
+      <hr/>
     <% end %>
-    <div id="vote"></div>
-    <p>Rating: <%= review.rating %></p>
-    <p>Review: <%= review.body %></p>
-    <p><%= review.created_at.strftime("%B %d, %Y") %></p>
-    <hr/>
-  <% end %>
+  </div>
+</div>
 
   <%= link_to "NBA Finals Index Page", nbafinals_path %>

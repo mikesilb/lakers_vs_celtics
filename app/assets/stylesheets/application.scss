@@ -5,7 +5,6 @@ body {
    font-color: #fff;
    background-color: #000;
    background-image: image-url("stream-celtics-lakers.jpg");
-   background-repeat: no-repeat;
 
 }
 
@@ -111,6 +110,7 @@ ul#navbar {
   border-top: 1px solid #ccc;
 }
 
+
 #nbafinalyears li
 {
   border-bottom: 1px solid #ccc;
@@ -131,6 +131,21 @@ ul#navbar {
   text-decoration: none;
 }
 
+#topbar {
+  margin-right: 50%;
+  border: 2px solid lightgrey;
+  color: orange;
+  font-family: Helvetica;
+  width: 35%;
+  text-align: left;
+  display: inline-block;
+  background-color: white;
+
+  opacity: 0.85;
+  padding: 0 5px;
+  z-index: 100;
+}
+
 #navbar li {
   float: left;
 }
@@ -142,6 +157,24 @@ ul#navbar {
   font-weight: bold;
   color: #088050;
   border-right: 1px solid #ccc;
+}
+
+div#reviewlist {
+  margin-top: 200px;
+  margin-right: 85%;
+  border: 2px solid lightgrey;
+  color: blue;
+  font-family: Helvetica;
+  position: absolute;
+  width: 85%;
+  text-align: left;
+  display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.85;
+  padding: 0 5px;
+  z-index: 100;
+
 }
 
 #nav li a:hover {

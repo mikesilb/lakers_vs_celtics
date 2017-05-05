@@ -7,14 +7,13 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     if @review.save
       flash[:success] = "Your review is successfully saved!"
-      redirect_to nbafinal_path(@nbafinal)
     else
       flash[:alert] = ''
       @review.errors.full_messages.each do |m|
         flash[:alert] += m
       end
-      redirect_to nbafinal_path(@nbafinal)
     end
+    redirect_to nbafinal_path(@nbafinal)
   end
 
   def edit

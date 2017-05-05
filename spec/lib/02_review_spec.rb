@@ -5,7 +5,6 @@ describe Review do
   mike = User.create(first_name: "Mike", last_name: "Silb", email: "ms@email.edu", password: "123456")
   nbafinal = Nbafinal.create(year: "2008", champion: "Celtics", numgames: 6)
 
-
   it "is valid with valid attributes" do
     subject.rating = 3
     subject.body = "This color is swell."

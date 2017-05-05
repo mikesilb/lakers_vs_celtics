@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "user can post review" do
-  let!(:user)  { FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.create(:user) }
   let!(:nbafinal) { FactoryGirl.create(:nbafinal) }
 
   scenario "from the nbafinal show page" do

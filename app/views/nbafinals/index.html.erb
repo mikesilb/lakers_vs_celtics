@@ -3,11 +3,14 @@
   <%= link_to "See All Users", users_path %>
 <% end %>
 </div>
-<span id=nbafinalyears>
+<ul id=nbafinalyears>
   <% @nbafinals.each do |finals| %>
-  <h3><%= link_to finals.year, nbafinal_path(finals) %></h3>
+  <li><%= link_to finals.year, nbafinal_path(finals) %></li>
 <% end %>
-</span>
+</ul>
 
-<div id=finals-list>
+
+<% if user_signed_in? && current_user.admin? %>
+  <div id=finals-list>
 </div>
+<% end %>

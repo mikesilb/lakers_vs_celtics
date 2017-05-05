@@ -6,6 +6,7 @@ body {
    background-color: #000;
    background-image: image-url("stream-celtics-lakers.jpg");
    background-repeat: no-repeat;
+
 }
 
 a:link, a:active, a:visited {
@@ -30,7 +31,7 @@ div#finals-list {
   position: absolute;
   width: 1000px;
   text-align: center;
-  display: inline-block;
+  display: inline;
   background-color: white;
   border-radius: 10px;
   opacity: 0.85;
@@ -44,15 +45,15 @@ div#eachfinals {
   color: orange;
   font-family: Helvetica;
   position: absolute;
-  width: 70%;
+  width: 700px;
   text-align: left;
-  display: inline-block;
+  display: inline;
   background-color: white;
   border-radius: 10px;
   opacity: 0.85;
   padding: 0 5px;
   z-index: 100;
-  margin-top: 30px;
+  margin-top: 100px;
 }
 
 span#nbafinalyears {
@@ -108,6 +109,26 @@ ul#navbar {
   background-color: #DA9D0A;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
+}
+
+#nbafinalyears li
+{
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  display: inline;
+  list-style-type: none;
+  padding-right: 2px;
+  background-color: #DA9D0A;
+  padding: 0;
+  width: 100%;
+  padding: 4px 17px;
+  color: #088050;
+  font-weight: bold;
+}
+
+#nbafinalyears a {
+  color: purple;
+  text-decoration: none;
 }
 
 #navbar li {

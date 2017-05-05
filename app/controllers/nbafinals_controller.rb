@@ -16,8 +16,8 @@ class NbafinalsController < ApplicationController
   def show
     @nbafinal = Nbafinal.find(params[:id])
     # @search_colors = Color.search(params[:query])
-    # @review = Review.new
-    # @review_ratings = Review::RATINGS
+     @review = Review.new
+     @review_ratings = Review::RATINGS
     # @text_color = text_color(@color.hex_code)
   end
 

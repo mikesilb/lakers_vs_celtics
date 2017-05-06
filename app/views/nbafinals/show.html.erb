@@ -1,22 +1,21 @@
-<div class="username">
+
   <h1><%= @nbafinal.year %></h1>
   <% if @nbafinal.champion == "Celtics" %>
     <% team_city = "Boston" %>
   <% else %>
     <% team_city = "Los Angeles" %>
   <% end %>
-  <div id="nbafinalshowpage">
   <div id="eachfinals">
-    <h3>The <%= team_city %> <%= @nbafinal.champion %> won the <%= @nbafinal.year %> NBA Championship in
-      <%= @nbafinal.numgames %> games. </h3>
+    <p>The <%= team_city %> <%= @nbafinal.champion %> won the <%= @nbafinal.year %> NBA Championship in
+      <%= @nbafinal.numgames %> games. </p>
       <% if @nbafinal.mvp != nil %>
-      <h3><%= @nbafinal.mvp %> was the MVP of the series.</h3>
+      <p><%= @nbafinal.mvp %> was the MVP of the series.<p>
       <% end %>
-    </h3>
   </div>
   <div id="reviewform">
     <% if user_signed_in? %>
       <%= form_for [ @nbafinal, @review ] do |f| %>
+        <h2> Add a review: </h2>
         <div class="field">
           <%= f.label :rating %>
           <%= f.select :rating, @review_ratings %>
@@ -34,28 +33,31 @@
     <% end %>
   </div>
 
+
 <div id=reviewlist>
-  <h4>Reviews</h4>
-    <% @nbafinal.reviews.each do |review| %>
-      <% if user_signed_in? %>
-        <% if current_user == review.user %>
-          <%= link_to "Edit Review", edit_review_path(review) %>
-        <% end %>
-        <% if current_user.id == review.user_id && current_user.admin? %>
-          |
-        <% end %>
-        <% if current_user.admin? %>
-          <%= link_to "Delete Review", review, method: :delete %>
-        <% end %>
+<h4>Reviews</h4>
+  <% @nbafinal.reviews.each do |review| %>
+    <% if user_signed_in? %>
+      <% if current_user == review.user %>
+        <%= link_to "Edit Review", edit_review_path(review) %>
       <% end %>
-      <div id="vote"></div>
-      <p>Rating: <%= review.rating %></p>
-      <p>Review: <%= review.body %></p>
-      <p><%= review.created_at.strftime("%B %d, %Y") %></p>
-      <p>Review made by <%= review.user.first_name %> <%= review.user.last_name %>
-      <hr/>
+      <% if current_user.id == review.user_id && current_user.admin? %>
+        |
+      <% end %>
+      <% if current_user.admin? %>
+        <%= link_to "Delete Review", review, method: :delete %>
+      <% end %>
     <% end %>
-  </div>
+    <div id="vote"></div>
+    <p>Rating: <%= review.rating %></p>
+    <p>Review: <%= review.body %></p>
+    <p><%= review.created_at.strftime("%B %d, %Y") %></p>
+    <p>Review made by <%= review.user.first_name %> <%= review.user.last_name %>
+    <hr/>
+  <% end %>
 </div>
 
-  <%= link_to "NBA Finals Index Page", nbafinals_path %>
+
+<div id="returntoindexlink">
+  <%= link_to "Return to NBA Finals Index Page", nbafinals_path %>
+</div>

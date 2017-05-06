@@ -41,18 +41,16 @@ div#finals-list {
 
 div#eachfinals {
   border: 2px solid lightgrey;
-  color: orange;
+  color: #ff8103;
   font-family: Helvetica;
-  position: absolute;
   width: 700px;
   text-align: left;
-  display: inline;
   background-color: white;
   border-radius: 10px;
   opacity: 0.85;
   padding: 0 5px;
   z-index: 100;
-  margin-top: 100px;
+  margin-top: 10px;
 }
 
 span#nbafinalyears {
@@ -82,7 +80,7 @@ div#content h3 {
 }
 
 div#userlist {
-  margin-top: 70px;
+  margin-top: 120px;
   margin-right: 50%;
   border: 2px solid lightgrey;
   color: orange;
@@ -90,7 +88,6 @@ div#userlist {
   position: absolute;
   width: 55%;
   text-align: left;
-  display: inline-block;
   background-color: white;
   border-radius: 10px;
   opacity: 0.85;
@@ -108,6 +105,51 @@ ul#navbar {
   background-color: #DA9D0A;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
+}
+
+#reviewform {
+  margin-left: 5%;
+  margin-top: 50px;
+  border: 2px solid lightgrey;
+  color: #07025e;
+  font-family: Helvetica;
+  width: 700px;
+  text-align: left;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.85;
+  padding: 0 5px;
+  z-index: 100;
+}
+
+#reviewform textarea {
+  font-family: Helvetica;
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#editreviewform {
+  margin-top: 100px;
+  border: 2px solid lightgrey;
+  color: #07025e;
+  font-family: Helvetica;
+  width: 700px;
+  text-align: left;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.85;
+  padding: 0 5px;
+  z-index: 100;
+}
+
+#editreviewform textarea {
+  font-family: Helvetica;
+  width: 70%;
+  padding: 0px 0px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }
 
 
@@ -154,13 +196,13 @@ ul#navbar {
   display: block;
   padding: 8px 47px;
   text-decoration: none;
-  font-weight: bold;
-  color: #088050;
+  color: #2B7A52;
   border-right: 1px solid #ccc;
 }
 
-div#reviewlist {
-  margin-top: 200px;
+
+#reviewlist {
+  margin-top: 110px;
   margin-right: 85%;
   border: 2px solid lightgrey;
   color: blue;
@@ -168,18 +210,21 @@ div#reviewlist {
   position: absolute;
   width: 85%;
   text-align: left;
-  display: inline-block;
   background-color: white;
   border-radius: 10px;
   opacity: 0.85;
   padding: 0 5px;
   z-index: 100;
-
 }
 
 #nav li a:hover {
   color: #c00;
   background-color: #fff;
+}
+
+#returntoindexlink a {
+  text-align: center;
+  color: white;
 }
 
 ul#books {

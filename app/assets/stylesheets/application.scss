@@ -45,12 +45,13 @@ div#eachfinals {
   font-family: Helvetica;
   width: 700px;
   text-align: left;
-  background-color: white;
+  background-color: black;
   border-radius: 10px;
   opacity: 0.85;
   padding: 0 5px;
   z-index: 100;
-  margin-top: 10px;
+  margin-top: 50px;
+
 }
 
 span#nbafinalyears {
@@ -200,14 +201,182 @@ ul#navbar {
   border-right: 1px solid #ccc;
 }
 
+#reviewform {
+  margin-left: 5%;
+  margin-top: 50px;
+  border: 2px solid lightgrey;
+  color: #07025e;
+  font-family: Helvetica;
+  width: 700px;
+  text-align: left;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.92;
+  padding: 0 5px;
+  z-index: 100;
+}
 
-#reviewlist {
-  margin-top: 110px;
+#reviewform textarea {
+  font-family: Helvetica;
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#editreviewform {
+  margin-top: 100px;
+  border: 2px solid lightgrey;
+  color: #07025e;
+  font-family: Helvetica;
+  width: 700px;
+  text-align: left;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.92;
+  padding: 0 5px;
+  z-index: 100;
+}
+
+#editreviewform textarea {
+  font-family: Helvetica;
+  width: 70%;
+  padding: 0px 0px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#imageform {
+  margin-left: 5%;
+  margin-top: 50px;
+  border: 2px solid lightgrey;
+  color: #07025e;
+  font-family: Helvetica;
+  width: 700px;
+  text-align: left;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.92;
+  padding: 0 5px;
+  z-index: 100;
+}
+
+#imageform textarea {
+  font-family: Helvetica;
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#editimageform {
+  margin-top: 100px;
+  border: 2px solid lightgrey;
+  color: #07025e;
+  font-family: Helvetica;
+  width: 700px;
+  text-align: left;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.92;
+  padding: 0 5px;
+  z-index: 100;
+}
+
+#editimageform textarea {
+  font-family: Helvetica;
+  width: 70%;
+  padding: 0px 0px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#videoform {
+  margin-left: 5%;
+  margin-top: 50px;
+  border: 2px solid lightgrey;
+  color: #07025e;
+  font-family: Helvetica;
+  width: 700px;
+  text-align: left;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.92;
+  padding: 0 5px;
+  z-index: 100;
+}
+
+#videoform textarea {
+  font-family: Helvetica;
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#editvideoform {
+  margin-top: 100px;
+  border: 2px solid lightgrey;
+  color: #07025e;
+  font-family: Helvetica;
+  width: 700px;
+  text-align: left;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.92;
+  padding: 0 5px;
+  z-index: 100;
+}
+
+#editvideoform textarea {
+  font-family: Helvetica;
+  width: 70%;
+  padding: 0px 0px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+div#videolist {
+  margin-top: 100px;
   margin-right: 85%;
   border: 2px solid lightgrey;
   color: blue;
   font-family: Helvetica;
-  position: absolute;
+  width: 85%;
+  text-align: left;
+  display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.98;
+  padding: 0 5px;
+  z-index: 100;
+
+}
+
+div#imagelist {
+  margin-top: 100px;
+  margin-right: 85%;
+  border: 2px solid lightgrey;
+  color: blue;
+  font-family: Helvetica;
+  width: 85%;
+  text-align: left;
+  display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+  opacity: 0.98;
+  padding: 0 5px;
+  z-index: 100;
+
+}
+
+div#reviewlist {
+  margin-top: 100px;
+
+  margin-right: 85%;
+  border: 2px solid lightgrey;
+  color: blue;
+  font-family: Helvetica;
   width: 85%;
   text-align: left;
   background-color: white;
@@ -239,6 +408,41 @@ div#sidebar {
    width: 200px;
    margin-left: 480px;
 }
+
+.button {
+   margin-left: 60%;
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 6.5px 13px;
+   -webkit-border-radius: 40px;
+   -moz-border-radius: 40px;
+   border-radius: 40px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 12px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
+
+
 
 ul#subjects {
    width: 700px;

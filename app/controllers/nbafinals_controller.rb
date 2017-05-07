@@ -17,8 +17,9 @@ class NbafinalsController < ApplicationController
     @nbafinal = Nbafinal.find(params[:id])
     # @search_colors = Color.search(params[:query])
     @review = Review.new
+    @image = Image.new
+    @video = Video.new
     @review_ratings = Review::RATINGS
-    # @text_color = text_color(@color.hex_code)
   end
 
   def new
@@ -53,17 +54,6 @@ class NbafinalsController < ApplicationController
   #     render :new
   #   end
   # end
-
-  def destroy
-    @color = Color.find(params[:id])
-    @color.destroy
-    redirect_to colors_path
-  end
-
-  def data
-    @colors = Color.all
-    render json: @colors
-  end
 
   private
 

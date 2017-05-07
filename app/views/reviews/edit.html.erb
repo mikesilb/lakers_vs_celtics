@@ -11,8 +11,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit value="Submit Review" %>
+    <%= f.submit value="Submit Review", :class => "button" %>
   </div>
 
 <% end %>
-<%= link_to 'Home', colors_path %> | <%= link_to "Delete Review", @review, method: :delete %>
+<%= link_to 'Home', nbafinals_path %> | <%= link_to "Delete Review", @review, method: :delete %>

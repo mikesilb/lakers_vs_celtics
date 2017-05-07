@@ -1,5 +1,4 @@
-
-  <h1><%= @nbafinal.year %></h1>
+<h1><%= @nbafinal.year %></h1>
   <% if @nbafinal.champion == "Celtics" %>
     <% team_city = "Boston" %>
   <% else %>
@@ -13,80 +12,79 @@
       <% end %>
   </div>
   <div id="reviewform">
-    <% if user_signed_in? %>
-      <h3>Add a review:</h3>
-      <%= form_for [ @nbafinal, @review ] do |f| %>
-        <h2> Add a review: </h2>
-        <div class="field">
-          <%= f.label :rating %>
-          <%= f.select :rating, @review_ratings %>
-        </div>
+  <% if user_signed_in? %>
+    <h3>Add a review:</h3>
+    <%= form_for [ @nbafinal, @review ] do |f| %>
+      <div class="field">
+        <%= f.label :rating %>
+        <%= f.select :rating, @review_ratings %>
+      </div>
 
-        <div class="field">
-          <%= f.label :body, "Review" %>
-          <%= f.text_area :body %>
-        </div>
+      <div class="field">
+        <%= f.label :body, "Review" %>
+        <%= f.text_area :body %>
+      </div>
 
-        <div class="actions">
-          <%= f.submit value="Submit Review", :class => "button" %>
-        </div>
-      <% end %>
+      <div class="actions">
+        <%= f.submit value="Submit Review", :class => "button" %>
+      </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
 
 
-  <div id="imageform">
-    <% if user_signed_in? %>
-      <h3>Add an image:</h3>
-      <%= form_for [ @nbafinal, @image ] do |f| %>
-        <div class="field">
-          <%= f.label :image, "Image" %>
-          <%= f.text_area :image %>
-        </div>
+<div id="imageform">
+  <% if user_signed_in? %>
+    <h3>Add an image:</h3>
+    <%= form_for [ @nbafinal, @image ] do |f| %>
+      <div class="field">
+        <%= f.label :image, "Image" %>
+        <%= f.text_area :image %>
+      </div>
 
-        <div class="actions">
-          <%= f.submit value="Submit Image", :class => "button" %>
-        </div>
-      <% end %>
+      <div class="actions">
+        <%= f.submit value="Submit Image", :class => "button" %>
+      </div>
     <% end %>
-  </div>
-  <div id="videoform">
-    <% if user_signed_in? %>
-      <h3>Add a video:</h3>
-      <%= form_for [ @nbafinal, @video ] do |f| %>
-        <div class="field">
-          <%= f.label :video, "Video" %>
-          <%= f.text_area :video %>
-        </div>
+  <% end %>
+</div>
+<div id="videoform">
+  <% if user_signed_in? %>
+    <h3>Add a video:</h3>
+    <%= form_for [ @nbafinal, @video ] do |f| %>
+      <div class="field">
+        <%= f.label :video, "Video" %>
+        <%= f.text_area :video %>
+      </div>
 
-        <div class="actions">
-          <%= f.submit value="Submit Video", :class => "button" %>
-        </div>
-      <% end %>
+      <div class="actions">
+        <%= f.submit value="Submit Video", :class => "button" %>
+      </div>
     <% end %>
-  </div>
-  <div id=videolist>
-    <h4>Videos</h4>
-      <% @nbafinal.videos.each do |video| %>
-        <% if user_signed_in? %>
-          <% if current_user == video.user %>
-            <%= link_to "Edit Video", edit_video_path(video) %>
-          <% end %>
-          <% if current_user.id == video.user_id && current_user.admin? %>
-            |
-          <% end %>
-          <% if current_user.id == video.user_id || current_user.admin? %>
-            <%= link_to "Delete Video", video, method: :delete %>
-          <% end %>
+  <% end %>
+</div>
+<div id=videolist>
+  <h4>Videos</h4>
+    <% @nbafinal.videos.each do |video| %>
+      <% if user_signed_in? %>
+        <% if current_user == video.user %>
+          <%= link_to "Edit Video", edit_video_path(video) %>
         <% end %>
-        <div id="votevideo"></div>
-        <p>Video: <iframe width="420" height="315" src="<%=video.video %>" frameborder="0" allowfullscreen></iframe></p>
-        <p><%= video.created_at.strftime("%B %d, %Y") %></p>
-        <p>Video made by <%= video.user.first_name %> <%= video.user.last_name %>
-        <hr/>
+        <% if current_user.id == video.user_id && current_user.admin? %>
+          |
+        <% end %>
+        <% if current_user.id == video.user_id || current_user.admin? %>
+          <%= link_to "Delete Video", video, method: :delete %>
+        <% end %>
       <% end %>
-    </div>
-<div id=imagelist>
+      <div id="votevideo"></div>
+      <p>Video: <iframe width="420" height="315" src="<%=video.video %>" frameborder="0" allowfullscreen></iframe></p>
+      <p><%= video.created_at.strftime("%B %d, %Y") %></p>
+      <p>Video made by <%= video.user.first_name %> <%= video.user.last_name %>
+      <hr/>
+    <% end %>
+  </div>
+  <div id=imagelist>
   <h4>Images</h4>
     <% @nbafinal.images.each do |image| %>
       <% if user_signed_in? %>
@@ -107,19 +105,18 @@
       <hr/>
     <% end %>
   </div>
-  <div id=reviewlist>
-  <h4>Reviews</h4>
-    <% @nbafinal.reviews.each do |review| %>
-      <% if user_signed_in? %>
-        <% if current_user == review.user %>
-          <%= link_to "Edit Review", edit_review_path(review) %>
-        <% end %>
-        <% if current_user.id == review.user_id && current_user.admin? %>
-          |
-        <% end %>
-        <% if current_user.id == review.user_id || current_user.admin? %>
-          <%= link_to "Delete Review", review, method: :delete %>
-        <% end %>
+<div id=reviewlist>
+<h4>Reviews</h4>
+  <% @nbafinal.reviews.each do |review| %>
+    <% if user_signed_in? %>
+      <% if current_user == review.user %>
+        <%= link_to "Edit Review", edit_review_path(review) %>
+      <% end %>
+      <% if current_user.id == review.user_id && current_user.admin? %>
+        |
+      <% end %>
+      <% if current_user.id == review.user_id || current_user.admin? %>
+        <%= link_to "Delete Review", review, method: :delete %>
       <% end %>
     <% end %>
     <div id="vote"></div>
@@ -131,7 +128,7 @@
   <% end %>
 </div>
 
+
 <div id="returntoindexlink">
   <%= link_to "Return to NBA Finals Index Page", nbafinals_path %>
 </div>
-

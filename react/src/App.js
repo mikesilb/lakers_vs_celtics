@@ -22,15 +22,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount(){
-    fetch('/api/v1/nbafinals')
-    .then(response => {
-      let parsed = response.json()
-      return parsed
-    }).then(ids => {
-      this.setState({ ids: ids })
-    })
-  }
+
 
   getRandomNbafinal(){
     let NbafinalIds = this.state.ids
@@ -80,14 +72,7 @@ class App extends Component {
 
   render(){
     let nbafinals = this.state.nbafinals.map(nbafinal => {
-      return(
-        <NbafinalTile
-          year={nbafinal.year}
-          numgames={nbafinal.numgames}
-          champion={nbafinal.champion}
-          mvp = {nbafinal.mvp}
-        />
-      )
+
     })
 
     let errors = this.state.messages.map(error => {
@@ -98,7 +83,6 @@ class App extends Component {
     return(
       <div>
         <h1>Add a new NBA Finals:</h1>
-        {nbafinals}
         {errors}
         <NewNbafinalForm
           handleYearChange={this.handleYearChange}

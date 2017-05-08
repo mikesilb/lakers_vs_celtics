@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507102738) do
+ActiveRecord::Schema.define(version: 20170508132953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.date     "date"
+    t.string   "score",       null: false
+    t.integer  "nbafinal_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["nbafinal_id"], name: "index_games_on_nbafinal_id", using: :btree
+  end
 
   create_table "images", force: :cascade do |t|
     t.string   "image",       null: false
@@ -21,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170507102738) do
     t.integer  "nbafinal_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "game_id"
     t.index ["nbafinal_id"], name: "index_images_on_nbafinal_id", using: :btree
     t.index ["user_id"], name: "index_images_on_user_id", using: :btree
   end
@@ -42,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170507102738) do
     t.integer  "nbafinal_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "game_id"
     t.index ["nbafinal_id"], name: "index_reviews_on_nbafinal_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
@@ -70,8 +81,12 @@ ActiveRecord::Schema.define(version: 20170507102738) do
     t.integer  "nbafinal_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "game_id"
     t.index ["nbafinal_id"], name: "index_videos_on_nbafinal_id", using: :btree
     t.index ["user_id"], name: "index_videos_on_user_id", using: :btree
   end
 
+  add_foreign_key "images", "games"
+  add_foreign_key "reviews", "games"
+  add_foreign_key "videos", "games"
 end

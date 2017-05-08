@@ -11,58 +11,56 @@
       <p><%= @nbafinal.mvp %> was the MVP of the series.<p>
       <% end %>
   </div>
-  <div id="reviewform">
   <% if user_signed_in? %>
-    <h3>Add a review:</h3>
-    <%= form_for [ @nbafinal, @review ] do |f| %>
-      <div class="field">
-        <%= f.label :rating %>
-        <%= f.select :rating, @review_ratings %>
-      </div>
+    <div id="reviewform">
+      <h3>Add a review:</h3>
+      <%= form_for [ @nbafinal, @review ] do |f| %>
+        <div class="field">
+          <%= f.label :rating %>
+          <%= f.select :rating, @review_ratings %>
+        </div>
 
-      <div class="field">
-        <%= f.label :body, "Review" %>
-        <%= f.text_area :body %>
-      </div>
+        <div class="field">
+          <%= f.label :body, "Review" %>
+          <%= f.text_area :body %>
+        </div>
 
-      <div class="actions">
-        <%= f.submit value="Submit Review", :class => "button" %>
-      </div>
+        <div class="actions">
+          <%= f.submit value="Submit Review", :class => "button" %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
-
-<div id="imageform">
   <% if user_signed_in? %>
-    <h3>Add an image:</h3>
-    <%= form_for [ @nbafinal, @image ] do |f| %>
-      <div class="field">
-        <%= f.label :image, "Image" %>
-        <%= f.text_area :image %>
-      </div>
+    <div id="imageform">
+      <h3>Add an image:</h3>
+      <%= form_for [ @nbafinal, @image ] do |f| %>
+        <div class="field">
+          <%= f.label :image, "Image" %>
+          <%= f.text_area :image %>
+        </div>
 
-      <div class="actions">
-        <%= f.submit value="Submit Image", :class => "button" %>
-      </div>
+        <div class="actions">
+          <%= f.submit value="Submit Image", :class => "button" %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
-<div id="videoform">
+  </div>
   <% if user_signed_in? %>
-    <h3>Add a video:</h3>
-    <%= form_for [ @nbafinal, @video ] do |f| %>
-      <div class="field">
-        <%= f.label :video, "Video" %>
-        <%= f.text_area :video %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit value="Submit Video", :class => "button" %>
-      </div>
+    <div id="videoform">
+      <h3>Add a video:</h3>
+      <%= form_for [ @nbafinal, @video ] do |f| %>
+        <div class="field">
+          <%= f.label :video, "Video" %>
+          <%= f.text_area :video %>
+        </div>
+        <div class="actions">
+          <%= f.submit value="Submit Video", :class => "button" %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 <div id=videolist>
   <h4>Videos</h4>
     <% @nbafinal.videos.each do |video| %>

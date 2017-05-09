@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Migration[5.0]
+class AddUsers < ActiveRecord::Migration[5.0]
   def self.up
     create_table :users do |t|
       ## Database authenticatable
@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :last_name, null: false
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-
+      t.string :role, null: false, default: "member"
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

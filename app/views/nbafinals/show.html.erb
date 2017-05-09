@@ -62,8 +62,13 @@
     <% end %>
   </div>
 <div id=videolist>
-  <h4>Videos</h4>
+  <h2>Videos:</h2>
     <% @nbafinal.videos.each do |video| %>
+      <div id="votevideo"></div>
+      <p><iframe width="420" height="315" src="<%=video.video %>" frameborder="0" allowfullscreen></iframe></p>
+      <p>Video added by <%= video.user.first_name %> <%= video.user.last_name %>
+      on <%= video.created_at.strftime("%B %d, %Y") %></p>
+      <p>
       <% if user_signed_in? %>
         <% if current_user == video.user %>
           <%= link_to "Edit Video", edit_video_path(video) %>
@@ -75,16 +80,17 @@
           <%= link_to "Delete Video", video, method: :delete %>
         <% end %>
       <% end %>
-      <div id="votevideo"></div>
-      <p>Video: <iframe width="420" height="315" src="<%=video.video %>" frameborder="0" allowfullscreen></iframe></p>
-      <p><%= video.created_at.strftime("%B %d, %Y") %></p>
-      <p>Video made by <%= video.user.first_name %> <%= video.user.last_name %>
       <hr/>
     <% end %>
   </div>
   <div id=imagelist>
-  <h4>Images</h4>
+  <h2>Images:</h2>
     <% @nbafinal.images.each do |image| %>
+      <div id="voteimage"></div>
+      <p><img src="<%= image.image %>"></p>
+      <p>Image added by <%= image.user.first_name %> <%= image.user.last_name %>
+      on <%= image.created_at.strftime("%B %d, %Y") %></p>
+      <p>
       <% if user_signed_in? %>
         <% if current_user == image.user %>
           <%= link_to "Edit Image", edit_image_path(image) %>
@@ -95,33 +101,32 @@
         <% if current_user.id == image.user_id || current_user.admin? %>
           <%= link_to "Delete Image", image, method: :delete %>
         <% end %>
+        </p>
+        <hr/>
       <% end %>
-      <div id="voteimage"></div>
-      <p>Image: <img src="<%= image.image %>"></p>
-      <p><%= image.created_at.strftime("%B %d, %Y") %></p>
-      <p>Image made by <%= image.user.first_name %> <%= image.user.last_name %>
-      <hr/>
     <% end %>
   </div>
 <div id=reviewlist>
-<h4>Reviews</h4>
+<h2>Reviews:</h2>
   <% @nbafinal.reviews.each do |review| %>
-    <% if user_signed_in? %>
-      <% if current_user == review.user %>
-        <%= link_to "Edit Review", edit_review_path(review) %>
-      <% end %>
-      <% if current_user.id == review.user_id && current_user.admin? %>
-        |
-      <% end %>
-      <% if current_user.id == review.user_id || current_user.admin? %>
-        <%= link_to "Delete Review", review, method: :delete %>
-      <% end %>
-    <% end %>
     <div id="vote"></div>
     <p>Rating: <%= review.rating %></p>
     <p>Review: <%= review.body %></p>
-    <p><%= review.created_at.strftime("%B %d, %Y") %></p>
-    <p>Review made by <%= review.user.first_name %> <%= review.user.last_name %>
+    <p>By <%= review.user.first_name %> <%= review.user.last_name %>
+      on <%= review.created_at.strftime("%B %d, %Y") %>
+      <p>
+      <% if user_signed_in? %>
+        <% if current_user == review.user %>
+          <%= link_to "Edit Review", edit_review_path(review) %>
+        <% end %>
+        <% if current_user.id == review.user_id && current_user.admin? %>
+          |
+        <% end %>
+        <% if current_user.id == review.user_id || current_user.admin? %>
+          <%= link_to "Delete Review", review, method: :delete %>
+        <% end %>
+      <% end %>
+    </p>
     <hr/>
   <% end %>
 </div>

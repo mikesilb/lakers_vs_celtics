@@ -4,7 +4,7 @@ body {
    font-size: large;
    font-color: #fff;
    background-color: #000;
-   background-image: image-url("stream-celtics-lakers.jpg");
+   background-image: image-url("imageedit_1_7597579352.gif");
 
 }
 
@@ -39,6 +39,10 @@ div#finals-list {
   margin-top: 100px;
 }
 
+div#nbafinal-tile {
+
+}
+
 div#eachfinals {
   border: 2px solid lightgrey;
   color: #ff8103;
@@ -51,7 +55,7 @@ div#eachfinals {
   padding: 0 5px;
   z-index: 100;
   margin-top: 50px;
-
+  margin-left: 5%
 }
 
 span#nbafinalyears {
@@ -109,7 +113,7 @@ ul#navbar {
 }
 
 #reviewform {
-  margin-left: 5%;
+  margin-left: 15%;
   margin-top: 50px;
   border: 2px solid lightgrey;
   color: #07025e;
@@ -128,6 +132,7 @@ ul#navbar {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  margin-left: 15%
 }
 
 #editreviewform {
@@ -153,8 +158,7 @@ ul#navbar {
 }
 
 
-#nbafinalyears li
-{
+#nbafinalyears li {
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
   display: inline;
@@ -342,7 +346,7 @@ div#videolist {
   color: blue;
   font-family: Helvetica;
   width: 85%;
-  text-align: left;
+  text-align: center;
   display: inline-block;
   background-color: white;
   border-radius: 10px;
@@ -359,7 +363,7 @@ div#imagelist {
   color: blue;
   font-family: Helvetica;
   width: 85%;
-  text-align: left;
+  text-align: center;
   display: inline-block;
   background-color: white;
   border-radius: 10px;
@@ -371,13 +375,12 @@ div#imagelist {
 
 div#reviewlist {
   margin-top: 100px;
-
   margin-right: 85%;
   border: 2px solid lightgrey;
   color: blue;
   font-family: Helvetica;
   width: 85%;
-  text-align: left;
+  text-align: center;
   background-color: white;
   border-radius: 10px;
   opacity: 0.85;

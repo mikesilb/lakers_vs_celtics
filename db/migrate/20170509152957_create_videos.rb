@@ -1,4 +1,4 @@
-class AddVideos < ActiveRecord::Migration[5.0]
+class CreateVideos < ActiveRecord::Migration[5.0]
   def change
     create_table :videos do |t|
       t.string :video, null: false

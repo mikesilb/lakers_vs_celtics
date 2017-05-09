@@ -1,4 +1,4 @@
-class AddForeignkeyToReviews < ActiveRecord::Migration[5.0]
+class AddForeignkeys < ActiveRecord::Migration[5.0]
   def change
     add_column :reviews, :game_id, :integer
     add_column :images, :game_id, :integer

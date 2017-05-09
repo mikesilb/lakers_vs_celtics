@@ -22,22 +22,35 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-
-
-  getRandomNbafinal(){
-    let NbafinalIds = this.state.ids
-    let randomNbafinalId = NbafinalIds[Math.floor(Math.random()*NbafinalIds.length)]
-    fetch(`/api/v1/nbafinals/${randomNbafinalId}`)
+  componentDidMount(){
+    fetch('/api/v1/nbafinals')
     .then(response => {
       let parsed = response.json()
-      console.log(parsed)
       return parsed
-    }).then(nbafinal => {
-      let newState = [...this.state.nbafinals, nbafinal]
-      this.setState({nbafinals: newState})
+      console.log(parsed)
+    }).then(years => {
+      this.setState({ years: years })
     })
   }
 
+  getRandomNbafinal(){
+    let NbafinalIds = this.state.years
+    console.log(NbafinalIds)
+    let randomNbafinalId = NbafinalIds[Math.floor(Math.random()*NbafinalIds.length)]
+    for (let i=0 ; i<13; i++)
+    {
+      let orderedNbafinalId = NbafinalIds[i]
+      fetch(`/api/v1/nbafinals/${orderedNbafinalId}`)
+      .then(response => {
+        let parsed = response.json()
+        console.log(parsed)
+        return parsed
+      }).then(nbafinal => {
+        let newState = [...this.state.nbafinals, nbafinal]
+        this.setState({nbafinals: newState})
+      })
+    }
+  }
   handleYearChange(event){
     let newYear = event.target.value
     this.setState({ year: newYear })
@@ -71,8 +84,18 @@ class App extends Component {
   }
 
   render(){
-    let nbafinals = this.state.nbafinals.map(nbafinal => {
 
+    let nbafinals = this.state.nbafinals.map(nbafinal => {
+      return(
+        <NbafinalTile
+          years={this.state.years}
+          nbafinals={this.state.nbafinal}
+          year={nbafinal.year}
+          numgames={nbafinal.numgames}
+          champion={nbafinal.champion}
+          mvp = {nbafinal.mvp}
+        />
+      )
     })
 
     let errors = this.state.messages.map(error => {
@@ -83,6 +106,8 @@ class App extends Component {
     return(
       <div>
         <h1>Add a new NBA Finals:</h1>
+        {nbafinals}
+        <button onClick={this.getRandomNbafinal}>Get Nbafinal</button>
         {errors}
         <NewNbafinalForm
           handleYearChange={this.handleYearChange}

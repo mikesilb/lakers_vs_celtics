@@ -36,10 +36,10 @@ class App extends Component {
   getRandomNbafinal(){
     let NbafinalIds = this.state.years
     console.log(NbafinalIds)
-    let randomNbafinalId = NbafinalIds[Math.floor(Math.random()*NbafinalIds.length)]
-    for (let i=0 ; i<13; i++)
-    {
-      let orderedNbafinalId = NbafinalIds[i]
+    // let randomNbafinalId = NbafinalIds[Math.floor(Math.random()*NbafinalIds.length)]
+    // for (let i=0 ; i<13; i++)
+    // {
+      let orderedNbafinalId = NbafinalIds[0]
       fetch(`/api/v1/nbafinals/${orderedNbafinalId}`)
       .then(response => {
         let parsed = response.json()
@@ -49,7 +49,7 @@ class App extends Component {
         let newState = [...this.state.nbafinals, nbafinal]
         this.setState({nbafinals: newState})
       })
-    }
+    // }
   }
   handleYearChange(event){
     let newYear = event.target.value
@@ -85,15 +85,10 @@ class App extends Component {
 
   render(){
 
-    let nbafinals = this.state.nbafinals.map(nbafinal => {
+    let nbafinals = this.state.years.map(year => {
       return(
         <NbafinalTile
-          years={this.state.years}
-          nbafinals={this.state.nbafinal}
-          year={nbafinal.year}
-          numgames={nbafinal.numgames}
-          champion={nbafinal.champion}
-          mvp = {nbafinal.mvp}
+          year={year}
         />
       )
     })

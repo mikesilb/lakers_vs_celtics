@@ -7,7 +7,7 @@ class Api::V1::NbafinalsController < ApplicationController
   end
 
   def show
-    nbafinal = Nbafinal.find(params[:id])
+    nbafinal = Nbafinal.where(year: params[:id])
     render json: nbafinal
   end
 

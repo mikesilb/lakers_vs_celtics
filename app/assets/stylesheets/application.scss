@@ -5,9 +5,10 @@ body {
    font-color: #fff;
    background-color: #000;
    background-image: image-url("imageedit_1_7597579352.gif");
-  //  background-size:     cover;
-    // background-repeat:   no-repeat;
-    background-position: center center
+   background-size: 100%;
+   //background-repeat:   no-repeat;
+   background-position: center center;
+   max-width: 1920px;
 }
 
 a:link, a:active, a:visited {
@@ -25,7 +26,7 @@ p {
 strong {
   color: blue;
 }
-div#finals-list {
+div#eachfinals {
   border: 2px solid lightgrey;
   color: orange;
   font-family: Helvetica;
@@ -41,8 +42,23 @@ div#finals-list {
   margin-top: 100px;
 }
 
-div#nbafinal-tile {
+div.Nbafinal-tile li {
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  display: inline;
+  list-style-type: none;
+  padding-right: 2px;
+  background-color: #DA9D0A;
+  padding: 0;
+  width: 100%;
+  padding: 4px 17px;
+  color: #088050;
+  font-weight: bold;
+}
 
+div.Nbafinal-tile  a {
+  color: #800080;
+  text-decoration: none;
 }
 
 div#eachfinals {
@@ -60,9 +76,25 @@ div#eachfinals {
   margin-left: 5%
 }
 
-span#nbafinalyears {
-  display: inline-block;
+#nba-final-show-react {
+  border: 2px solid lightgrey;
+  color: #ff8103;
+  font-family: Helvetica;
+  width: 700px;
+  text-align: left;
+  background-color: black;
+  border-radius: 10px;
+  opacity: 0.85;
+  padding: 0 5px;
+  z-index: 100;
+  margin-top: 50px;
+  margin-left: 5%
 }
+
+
+
+
+
 div#userlink{
   margin-bottom: 20px;
 }
@@ -160,7 +192,12 @@ ul#navbar {
 }
 
 
-#nbafinalyears li {
+#finals-list {
+  width: 100%;
+  text-align: center;
+}
+
+#finals-list li {
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
   display: inline;
@@ -174,9 +211,15 @@ ul#navbar {
   font-weight: bold;
 }
 
-#nbafinalyears a {
+#finals-list a {
   color: #800080;
   text-decoration: none;
+}
+
+ul.Nbafinal-tile {
+  display: inline-block;
+  padding: 1px;
+  margin-top: 3px
 }
 
 #topbar {
@@ -192,6 +235,10 @@ ul#navbar {
   opacity: 0.85;
   padding: 0 5px;
   z-index: 100;
+}
+
+ul#navbar {
+  margin-bottom: 0px;
 }
 
 #navbar li {
@@ -397,7 +444,7 @@ div#reviewlist {
 
 #returntoindexlink a {
   text-align: center;
-  color: white;
+  color: black;
 }
 
 ul#books {

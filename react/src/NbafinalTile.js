@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const NbafinalTile = props => {
-  return(
-    <div className='Nbafinal-tile'>
-      <h3>{props.year}</h3>
 
-    </div>
+  return(
+    <ul className='Nbafinal-tile'>
+        <li><a href={`/nbafinals/${props.year}`}> {props.year} </a></li>
+    </ul>
   )
 }
 

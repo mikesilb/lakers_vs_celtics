@@ -14,7 +14,7 @@ class NbafinalsController < ApplicationController
   end
 
   def show
-    @nbafinal = Nbafinal.find(params[:id])
+    @nbafinal = Nbafinal.find_by(year: params[:id])
     # @search_colors = Color.search(params[:query])
     @review = Review.new
     @image = Image.new

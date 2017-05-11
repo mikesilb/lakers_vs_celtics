@@ -1,16 +1,4 @@
-<h1><%= @nbafinal.year %></h1>
-  <% if @nbafinal.champion == "Celtics" %>
-    <% team_city = "Boston" %>
-  <% else %>
-    <% team_city = "Los Angeles" %>
-  <% end %>
-  <div id="eachfinals">
-    <p>The <%= team_city %> <%= @nbafinal.champion %> won the <%= @nbafinal.year %> NBA Championship in
-      <%= @nbafinal.numgames %> games. </p>
-      <% if @nbafinal.mvp != nil %>
-      <p><%= @nbafinal.mvp %> was the MVP of the series.<p>
-      <% end %>
-  </div>
+<div id="nba-final-show-react" data-id=<%= @nbafinal.year %>></div>
   <% if user_signed_in? %>
     <div id="reviewform">
       <h3>Add a review:</h3>

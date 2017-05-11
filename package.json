@@ -18,6 +18,7 @@
     "babel-polyfill": "^6.23.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "react-router": "^2.8.1",
     "webpack": "^1.12.13",
     "babel-core": "^6.5.1",
     "babel-loader": "^6.2.2",

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import NewNbafinalForm from './NewNbafinalForm';
 import NbafinalTile from './NbafinalTile';
 
-class App extends Component {
+class Nbafinalscontainer extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -36,9 +35,6 @@ class App extends Component {
   getRandomNbafinal(){
     let NbafinalIds = this.state.years
     console.log(NbafinalIds)
-    // let randomNbafinalId = NbafinalIds[Math.floor(Math.random()*NbafinalIds.length)]
-    // for (let i=0 ; i<13; i++)
-    // {
       let orderedNbafinalId = NbafinalIds[0]
       fetch(`/api/v1/nbafinals/${orderedNbafinalId}`)
       .then(response => {
@@ -88,6 +84,7 @@ class App extends Component {
     let nbafinals = this.state.years.map(year => {
       return(
         <NbafinalTile
+          key={year}
           year={year}
         />
       )
@@ -100,24 +97,12 @@ class App extends Component {
     })
     return(
       <div>
-        <h1>Add a new NBA Finals:</h1>
         {nbafinals}
-        <button onClick={this.getRandomNbafinal}>Get Nbafinal</button>
+        {this.props.children}
         {errors}
-        <NewNbafinalForm
-          handleYearChange={this.handleYearChange}
-          handleNumgamesChange={this.handleNumgamesChange}
-          handleChampionChange={this.handleChampionChange}
-          handleMVPChange={this.handleMVPChange}
-          handleSubmit={this.handleSubmit}
-          year={this.state.year}
-          numgames={this.state.numgames}
-          champion={this.state.champion}
-          mvp={this.state.mvp}
-        />
       </div>
     )
   }
 }
 
-export default App;
+export default Nbafinalscontainer;

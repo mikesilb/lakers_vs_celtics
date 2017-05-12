@@ -14,12 +14,12 @@ class Nbafinalcontainer extends Component {
   }
 
   componentDidMount() {
-    let nbafinalId;
+    let nbafinalYear;
 
     if(document.getElementById('nba-final-show-react')) {
-      nbafinalId = document.getElementById('nba-final-show-react').getAttribute('data-id');
+      nbafinalYear = document.getElementById('nba-final-show-react').getAttribute('data-year');
     }
-    fetch(`/api/v1/nbafinals/${nbafinalId}`)
+    fetch(`/api/v1/nbafinals/${nbafinalYear}`)
     .then((response) => response.json())
     .then((json) => {
       console.log(json)
@@ -32,6 +32,7 @@ class Nbafinalcontainer extends Component {
   }
 
   render() {
+    ;
     return(
       <div className="nbafinals-container">
         <Nbafinal

@@ -14,7 +14,7 @@ const Nbafinal = props => {
   if (props.year >= 1969) {
     mvp_message = "was the MVP of the series."
   }
-  
+
     return(
     <div>
       <p> The {city} {props.champion} won the {props.year} NBA

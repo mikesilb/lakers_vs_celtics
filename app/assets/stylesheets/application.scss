@@ -1,6 +1,9 @@
 // @import "*";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
 body {
-   font-family: Helvetica, Geneva, Arial, sans-serif;
+   font-family: Roboto, Noto+Sans, Geneva, Arial, sans-serif;
    font-size: large;
    font-color: #fff;
    background-color: #000;
@@ -8,7 +11,7 @@ body {
    background-size: 100%;
    //background-repeat:   no-repeat;
    background-position: center center;
-   max-width: 1920px;
+   max-width: 1000px;
 }
 
 a:link, a:active, a:visited {
@@ -29,7 +32,7 @@ strong {
 div#eachfinals {
   border: 2px solid lightgrey;
   color: orange;
-  font-family: Helvetica;
+  font-family: Roboto;
   position: absolute;
   width: 1000px;
   text-align: center;
@@ -64,7 +67,7 @@ div.Nbafinal-tile  a {
 div#eachfinals {
   border: 2px solid lightgrey;
   color: #ff8103;
-  font-family: Helvetica;
+  font-family: Roboto;
   width: 700px;
   text-align: left;
   background-color: black;
@@ -79,7 +82,7 @@ div#eachfinals {
 #nba-final-show-react {
   border: 2px solid lightgrey;
   color: #ff8103;
-  font-family: Helvetica;
+  font-family: Roboto;
   width: 700px;
   text-align: left;
   background-color: black;
@@ -90,9 +93,6 @@ div#eachfinals {
   margin-top: 50px;
   margin-left: 5%
 }
-
-
-
 
 
 div#userlink{
@@ -123,7 +123,7 @@ div#userlist {
   margin-right: 50%;
   border: 2px solid lightgrey;
   color: orange;
-  font-family: Helvetica;
+  font-family: Roboto;
   position: absolute;
   width: 55%;
   text-align: left;
@@ -151,7 +151,7 @@ ul#navbar {
   margin-top: 50px;
   border: 2px solid lightgrey;
   color: #07025e;
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 700px;
   text-align: left;
   background-color: white;
@@ -161,7 +161,7 @@ ul#navbar {
 }
 
 #reviewform textarea {
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 70%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -173,7 +173,7 @@ ul#navbar {
   margin-top: 100px;
   border: 2px solid lightgrey;
   color: #07025e;
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 700px;
   text-align: left;
   background-color: white;
@@ -184,7 +184,7 @@ ul#navbar {
 }
 
 #editreviewform textarea {
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 70%;
   padding: 0px 0px;
   margin: 8px 0;
@@ -223,10 +223,10 @@ ul.Nbafinal-tile {
 }
 
 #topbar {
-  margin-right: 50%;
+  margin-left: 65.5%;
   border: 2px solid lightgrey;
   color: orange;
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 35%;
   text-align: left;
   display: inline-block;
@@ -242,6 +242,7 @@ ul#navbar {
 }
 
 #navbar li {
+  display: hidden;
   float: left;
 }
 
@@ -258,7 +259,7 @@ ul#navbar {
   margin-top: 50px;
   border: 2px solid lightgrey;
   color: #07025e;
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 700px;
   text-align: left;
   background-color: white;
@@ -269,7 +270,7 @@ ul#navbar {
 }
 
 #reviewform textarea {
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 70%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -280,7 +281,7 @@ ul#navbar {
   margin-top: 100px;
   border: 2px solid lightgrey;
   color: #07025e;
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 700px;
   text-align: left;
   background-color: white;
@@ -291,7 +292,7 @@ ul#navbar {
 }
 
 #editreviewform textarea {
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 70%;
   padding: 0px 0px;
   margin: 8px 0;
@@ -303,7 +304,7 @@ ul#navbar {
   margin-top: 50px;
   border: 2px solid lightgrey;
   color: #07025e;
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 700px;
   text-align: left;
   background-color: white;
@@ -314,7 +315,7 @@ ul#navbar {
 }
 
 #imageform textarea {
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 70%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -325,7 +326,7 @@ ul#navbar {
   margin-top: 100px;
   border: 2px solid lightgrey;
   color: #07025e;
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 700px;
   text-align: left;
   background-color: white;
@@ -336,7 +337,7 @@ ul#navbar {
 }
 
 #editimageform textarea {
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 70%;
   padding: 0px 0px;
   margin: 8px 0;
@@ -348,7 +349,7 @@ ul#navbar {
   margin-top: 50px;
   border: 2px solid lightgrey;
   color: #07025e;
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 700px;
   text-align: left;
   background-color: white;
@@ -359,7 +360,7 @@ ul#navbar {
 }
 
 #videoform textarea {
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 70%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -370,7 +371,7 @@ ul#navbar {
   margin-top: 100px;
   border: 2px solid lightgrey;
   color: #07025e;
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 700px;
   text-align: left;
   background-color: white;
@@ -381,7 +382,7 @@ ul#navbar {
 }
 
 #editvideoform textarea {
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 70%;
   padding: 0px 0px;
   margin: 8px 0;
@@ -393,7 +394,7 @@ div#videolist {
   margin-right: 85%;
   border: 2px solid lightgrey;
   color: blue;
-  font-family: Helvetica;
+  font-family: Roboto, Helvetica;
   width: 85%;
   text-align: center;
   display: inline-block;
@@ -410,7 +411,7 @@ div#imagelist {
   margin-right: 85%;
   border: 2px solid lightgrey;
   color: blue;
-  font-family: Helvetica;
+  font-family: Roboto;
   width: 85%;
   text-align: center;
   display: inline-block;
@@ -427,7 +428,7 @@ div#reviewlist {
   margin-right: 85%;
   border: 2px solid lightgrey;
   color: blue;
-  font-family: Helvetica;
+  font-family: Roboto;
   width: 85%;
   text-align: center;
   background-color: white;
@@ -479,7 +480,7 @@ div#sidebar {
    text-shadow: rgba(0,0,0,.4) 0 1px 0;
    color: white;
    font-size: 12px;
-   font-family: Helvetica, Arial, Sans-Serif;
+   font-family: Roboto, Helvetica, Arial, Sans-Serif;
    text-decoration: none;
    vertical-align: middle;
    }

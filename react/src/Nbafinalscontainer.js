@@ -24,7 +24,7 @@ class Nbafinalscontainer extends Component {
   }
 
   componentDidMount(){
-    fetch('/api/v1/nbafinals')
+    fetch('/api/v1/nbafinals', {method: 'get'})
     .then(response => {
       let parsed = response.json()
       return parsed
@@ -39,7 +39,7 @@ class Nbafinalscontainer extends Component {
     let NbafinalIds = this.state.years
     console.log(NbafinalIds)
       let orderedNbafinalId = NbafinalIds[0]
-      fetch(`/api/v1/nbafinals/${orderedNbafinalId}`)
+      fetch(`/api/v1/nbafinals/${orderedNbafinalId}`,  {method: 'get'})
       .then(response => {
         let parsed = response.json()
         console.log(parsed)

@@ -19,7 +19,7 @@ class Nbafinalcontainer extends Component {
     if(document.getElementById('nba-final-show-react')) {
       nbafinalYear = document.getElementById('nba-final-show-react').getAttribute('data-year');
     }
-    fetch(`/api/v1/nbafinals/${nbafinalYear}`)
+    fetch(`/api/v1/nbafinals/${nbafinalYear}`, {method: 'get'})
     .then((response) => response.json())
     .then((json) => {
       console.log(json)

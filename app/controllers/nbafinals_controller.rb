@@ -1,20 +1,11 @@
 class NbafinalsController < ApplicationController
   def index
-    # # @search_colors = Color.search(params[:query]).order('created_at DESC')
-    # # @rand_color = @search_colors.sample
-    # # @text_color = text_color(@rand_color.hex_code)
-    # if user_signed_in?
-    #   @recent_reviews = current_user.reviews.order('created_at DESC').limit(5)
-    # else
-    #   @recent_reviews = []
-    # end
-
     @nbafinals = Nbafinal.all
     @users = User.all
   end
 
   def show
-    @nbafinal = Nbafinal.find_by(year: params[:id])
+    @nbafinal = Nbafinal.find_by(id: params[:id])
     # @search_colors = Color.search(params[:query])
     @review = Review.new
     @image = Image.new

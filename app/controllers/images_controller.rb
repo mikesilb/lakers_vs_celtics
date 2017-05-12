@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   def create
-    @nbafinal = Nbafinal.find(params[:nbafinal_id])
+    @nbafinal = Nbafinal.find_by(id: params[:nbafinal_id])
     @image = Image.new(image_params)
     @image.nbafinal = @nbafinal
     @image.user = current_user

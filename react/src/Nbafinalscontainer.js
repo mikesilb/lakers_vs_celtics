@@ -5,9 +5,11 @@ class Nbafinalscontainer extends Component {
   constructor(props){
     super(props);
     this.state = {
+      json: [],
       years: [],
       nbafinals: [],
       year: '',
+      id: '',
       numgames: '',
       champion: '',
       mvp: '',
@@ -27,8 +29,9 @@ class Nbafinalscontainer extends Component {
       let parsed = response.json()
       return parsed
       console.log(parsed)
-    }).then(years => {
-      this.setState({ years: years })
+    }).then(json => {
+      this.setState({ json: json
+     })
     })
   }
 
@@ -81,11 +84,12 @@ class Nbafinalscontainer extends Component {
 
   render(){
 
-    let nbafinals = this.state.years.map(year => {
+    let nbafinals = this.state.json.map(json => {
       return(
         <NbafinalTile
-          key={year}
-          year={year}
+          key={json.id}
+          id={json.id}
+          year={json.year}
         />
       )
     })

@@ -2,7 +2,7 @@ class Api::V1::NbafinalsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-    nbafinal_years = Nbafinal.all.pluck(:year)
+    nbafinal_years = Nbafinal.all
     render json: nbafinal_years
   end
 

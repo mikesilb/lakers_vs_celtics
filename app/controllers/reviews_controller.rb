@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def create
-    @nbafinal = Nbafinal.find(params[:nbafinal_id])
+    @nbafinal = Nbafinal.find_by(id: params[:nbafinal_id])
     @review = Review.new(review_params)
     @review.nbafinal = @nbafinal
     @review.user = current_user

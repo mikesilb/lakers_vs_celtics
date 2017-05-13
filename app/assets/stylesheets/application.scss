@@ -322,6 +322,7 @@ input.button {
 
 #editreviewform {
   margin-top: 100px;
+  margin-left: 100px;
   border: 2px solid lightgrey;
   color: #07025e;
   font-family: Roboto, Helvetica;
@@ -336,7 +337,8 @@ input.button {
 
 #editreviewform textarea {
   font-family: Roboto, Helvetica;
-  width: 70%;
+  width: 85%;
+  height: 65px;
   padding: 0px 0px;
   margin: 8px 0;
   box-sizing: border-box;

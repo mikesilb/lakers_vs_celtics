@@ -484,6 +484,10 @@ div#reviewlist {
   padding: 0 5px;
   z-index: 100;
 }
+div#reviewlist p {
+  margin-left: 60px;
+  margin-right: 60px;
+}
 
 #nav li a:hover {
   color: #c00;

@@ -1,6 +1,7 @@
 <div id="nba-final-show-react" data-year=<%= @nbafinal.year %>></div>
   <% if user_signed_in? %>
     <div id="reviewform">
+      <div class="formcomponents">
       <h3>Add a review:</h3>
       <%= form_for [ @nbafinal, @review ] do |f| %>
         <div class="field">
@@ -8,44 +9,54 @@
           <%= f.select :rating, @review_ratings %>
         </div>
 
-        <div class="field">
+        <div class="corefield">
+          <div class="corelabel">
           <%= f.label :body, "Review" %>
+        </div>
           <%= f.text_area :body %>
         </div>
 
         <div class="actions">
           <%= f.submit value="Submit Review", :class => "button" %>
         </div>
+      </div>
+      </div>
       <% end %>
     <% end %>
-  </div>
+
 
   <% if user_signed_in? %>
     <div id="imageform">
+      <div class="formcomponents">
       <h3>Add an image:</h3>
       <%= form_for [ @nbafinal, @image ] do |f| %>
-        <div class="field">
-          <%= f.label :image, "Image" %>
+        <div class="corefield">
+          <div class="corelabel">
+        </div>
           <%= f.text_area :image %>
         </div>
 
         <div class="actions">
           <%= f.submit value="Submit Image", :class => "button" %>
         </div>
+      </div>
+    </div>
       <% end %>
     <% end %>
-  </div>
   <% if user_signed_in? %>
     <div id="videoform">
+    <div class="formcomponents">
       <h3>Add a video:</h3>
       <%= form_for [ @nbafinal, @video ] do |f| %>
-        <div class="field">
-          <%= f.label :video, "Video" %>
+        <div class="corefield">
+          <div class="corelabel">
           <%= f.text_area :video %>
         </div>
         <div class="actions">
           <%= f.submit value="Submit Video", :class => "button" %>
         </div>
+      </div>
+    </div>
       <% end %>
     <% end %>
   </div>

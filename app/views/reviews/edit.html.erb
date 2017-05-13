@@ -1,4 +1,5 @@
 <div id="editreviewform">
+  <div class="formcomponents">
 <h2>Edit Review</h2>
 <%= form_for(@review) do |f| %>
   <div class="field">
@@ -6,8 +7,10 @@
     <%= f.select :rating, @review_ratings %>
   </div>
 
-  <div class="field">
+  <div class="corefield">
+    <div class="corelabel">
     <%= f.label :body, "Review" %>
+  </div>
     <%= f.text_area :body %>
   </div>
 
@@ -15,7 +18,8 @@
     <%= f.submit value="Submit Review", :class => "button" %>
   </div>
 
+
 <% end %>
 <%= link_to 'Home', nbafinals_path %> | <%= link_to "Delete Review", @review, method: :delete %>
+  </div>
 </div>
-

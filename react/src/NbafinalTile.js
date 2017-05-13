@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 const NbafinalTile = props => {
   return(
     <ul className='Nbafinal-tile'>
-        <li><a href={`/nbafinals/${props.id}`}> {props.year} </a></li>
+        <h1><a href={`/nbafinals/${props.id}`}> {props.year} </a></h1>
     </ul>
   )
 }

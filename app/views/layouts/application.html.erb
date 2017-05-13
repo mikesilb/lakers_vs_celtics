@@ -19,11 +19,15 @@
       <% if user_signed_in? %>
       Logged in as <strong><%= current_user.first_name %></strong>.
       <% else %>
-      <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %>
-      <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %>
+      <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link' %> |
+      <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %> |
       <% end %>
-      <p class="home-link"> <%= link_to "Home", root_path %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> </p>
+      <p class="home-link">
+        <% if user_signed_in? && current_user.admin? %>
+          <%= link_to "See All Users", users_path %>
+        <% end %>
+        <%= link_to "Home", root_path %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
     </p>
     </div>
       <header>

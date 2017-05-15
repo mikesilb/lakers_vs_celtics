@@ -1,13 +1,15 @@
-<h1>Edit Image</h1>
-<%= form_for(@image) do |f| %>
-  <div class="field">
-    <%= f.label :image, "Image" %>
-    <%= f.text_area :image %>
-  </div>
+<div class="editimageform">
+  <h1>Edit Image</h1>
+  <%= form_for(@image) do |f| %>
+    <div class="field">
+      <%= f.label :image, "Image" %>
+      <%= f.text_area :image %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit value="Submit Image", :class => "button" %>
-  </div>
+    <div class="actions">
+      <%= f.submit value="Submit Image", :class => "button" %>
+    </div>
 
-<% end %>
-<%= link_to 'Home', nbafinals_path %> | <%= link_to "Delete Image", @image, method: :delete %>
+  <% end %>
+  <%= link_to 'Home', nbafinals_path %> | <%= link_to "Delete Image", @image, method: :delete %>
+</div>

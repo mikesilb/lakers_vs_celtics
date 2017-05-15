@@ -1,2 +1,9 @@
 <div id=finals-list>
 </div>
+
+
+<% @nbafinals.each do | finals | %>
+  <div id=hiddenfinalsindex>
+    <h3><%= link_to finals.year, nbafinal_path(finals) %></h3>
+  </div>
+<% end %>

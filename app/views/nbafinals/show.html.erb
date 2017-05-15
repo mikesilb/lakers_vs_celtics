@@ -1,16 +1,39 @@
 <div id="nba-final-show-react" data-year=<%= @nbafinal.year %>></div>
-  <% if user_signed_in? %>
-    <div id="reviewform">
-      <div class="formcomponents">
+<p></p>
+<div id="hiddenfinalsshow">
+  <h1><%= @nbafinal.year %></h1>
+  <% if @nbafinal.champion == "Celtics" %>
+    <% team_city = "Boston" %>
+  <% else %>
+    <% team_city = "Los Angeles" %>
+  <% end %>
+  <h3>The <%= team_city %> <%= @nbafinal.champion %> won the <%= @nbafinal.year %> NBA Championship in
+  <%= @nbafinal.numgames %> games. </h3>
+  <% if @nbafinal.mvp != nil %>
+    <h3><%= @nbafinal.mvp %> was the MVP of the series.</h3>
+  <% end %>
+</div>
+<p></p>
+<div id="gamelist">
+  <ul>
+    <% @games.each_with_index do |game, index| %>
+      <li>Game <%= index + 1%>: <%= link_to game.score, nbafinal_game_path(game) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<% if user_signed_in? %>
+  <div class="reviewform">
+    <div class="formcomponents">
       <h3>Add a review:</h3>
       <%= form_for [ @nbafinal, @review ] do |f| %>
-        <div class="field">
-          <%= f.label :rating %>
-          <%= f.select :rating, @review_ratings %>
-        </div>
+      <div class="field">
+        <%= f.label :rating %>
+        <%= f.select :rating, @review_ratings %>
+      </div>
 
-        <div class="corefield">
-          <div class="corelabel">
+      <div class="corefield">
+        <div class="corelabel">
           <%= f.label :body, "Review" %>
         </div>
           <%= f.text_area :body %>
@@ -20,13 +43,13 @@
           <%= f.submit value="Submit Review", :class => "button" %>
         </div>
       </div>
-      </div>
-      <% end %>
-    <% end %>
+    </div>
+  <% end %>
+<% end %>
 
 
   <% if user_signed_in? %>
-    <div id="imageform">
+    <div class="imageform">
       <div class="formcomponents">
       <h3>Add an image:</h3>
       <%= form_for [ @nbafinal, @image ] do |f| %>
@@ -44,7 +67,7 @@
       <% end %>
     <% end %>
   <% if user_signed_in? %>
-    <div id="videoform">
+    <div class="videoform">
     <div class="formcomponents">
       <h3>Add a video:</h3>
       <%= form_for [ @nbafinal, @video ] do |f| %>
@@ -60,7 +83,7 @@
       <% end %>
     <% end %>
   </div>
-<div id=videolist>
+<div class=videolist>
   <h2>Videos:</h2>
     <% @nbafinal.videos.each do |video| %>
       <div id="votevideo"></div>
@@ -82,7 +105,7 @@
       <hr/>
     <% end %>
   </div>
-  <div id=imagelist>
+  <div class=imagelist>
   <h2>Images:</h2>
     <% @nbafinal.images.each do |image| %>
       <div id="voteimage"></div>
@@ -105,7 +128,7 @@
       <% end %>
     <% end %>
   </div>
-<div id=reviewlist>
+<div class=reviewlist>
 <h2>Reviews:</h2>
   <% @nbafinal.reviews.each do |review| %>
     <div id="vote"></div>

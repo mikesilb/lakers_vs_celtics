@@ -6,6 +6,8 @@ class NbafinalsController < ApplicationController
 
   def show
     @nbafinal = Nbafinal.find_by(id: params[:id])
+    @reviews = @nbafinal.reviews
+    @games = Game.where(nbafinal_id: @nbafinal)
     # @search_colors = Color.search(params[:query])
     @review = Review.new
     @image = Image.new

@@ -22,10 +22,10 @@ feature "visitors can edit a review" do
     click_link "Edit Review"
 
     select(4, from: "Rating")
-    fill_in "Review", with: "I have a new found respect for this colour"
+    fill_in "Review", with: "I have a new found respect for this NBA Finals"
     click_button "Submit Review"
 
-    expect(page).to have_content "I have a new found respect for this colour"
+    expect(page).to have_content "I have a new found respect for this NBA Finals"
     expect(page).to have_content "Your review is successfully saved!"
     expect(page).to_not have_content "This just makes me sad."
   end

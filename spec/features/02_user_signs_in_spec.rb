@@ -19,7 +19,6 @@ feature "user signs in" do
     fill_in "Email", with: "nobody@example.com"
     fill_in "Password", with: "password"
     click_button "Log In"
-    
     expect(page).to have_content("Invalid Email or password.")
     expect(page).to_not have_content("Welcome Back!")
     expect(page).to_not have_content("Logout")

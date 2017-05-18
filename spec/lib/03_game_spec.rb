@@ -26,6 +26,4 @@ describe Game do
     subject.score = "Lakers 88, Celtics 98"
     expect(subject).to_not be_valid
   end
-
-
 end

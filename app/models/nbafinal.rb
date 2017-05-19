@@ -8,4 +8,6 @@ class Nbafinal < ApplicationRecord
   has_many :reviews
   has_many :images
   has_many :videos
+  has_many :games
+  has_many :teams
 end

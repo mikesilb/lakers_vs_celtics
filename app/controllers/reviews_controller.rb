@@ -1,7 +1,12 @@
 class ReviewsController < ApplicationController
   def create
-    @nbafinal = Nbafinal.find(params[:nbafinal_id])
+
+    # @nbafinal = Nbafinal.find(params[:nbafinal_id])
+    @game = Game.find(params[:game_id])
+    @nbafinal = @game.nbafinal
+
     @review = Review.new(review_params)
+    @review.game = @game
     @review.nbafinal = @nbafinal
     @review.user = current_user
     if @review.save
@@ -12,7 +17,8 @@ class ReviewsController < ApplicationController
         flash[:alert] += m
       end
     end
-    redirect_to nbafinal_path(@nbafinal)
+#    redirect_to nbafinal_path(@nbafinal)
+    redirect_to nbafinal_game_path(@nbafinal, @game)
   end
 
   def edit

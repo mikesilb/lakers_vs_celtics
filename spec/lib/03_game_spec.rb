@@ -24,7 +24,7 @@ describe Game do
   end
 
   it "is not valid without a connected NBA Finals" do
-    subject.date = 'Thu, 05 Jun 2008'
+    subject.date = '2008-06-05'
     subject.score = "Lakers 88, Celtics 98"
     expect(subject).to_not be_valid
   end

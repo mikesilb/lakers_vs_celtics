@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :game do
-    date 'Thu, 05 Jun 2008'
-    score "Lakers 88, Celtics 98"
-    nbafinal_id 11
+    nbafinal
+    score "Celtics 89, Lakers 102"
   end
 
   def self.reload

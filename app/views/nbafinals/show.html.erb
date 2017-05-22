@@ -17,7 +17,7 @@
 <div id="gamelist">
   <ul>
     <% @games.each_with_index do |game, index| %>
-      <li>Game <%= index + 1%>: <%= link_to game.score, nbafinal_game_path(game) %></li>
+      <li>Game <%= index + 1%>: <%= link_to game.score, nbafinal_game_path(@nbafinal, game) %></li>
     <% end %>
   </ul>
 </div>

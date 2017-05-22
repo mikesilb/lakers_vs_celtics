@@ -7,8 +7,9 @@ feature "user can post review" do
   scenario "from the game show page" do
     login_as(user)
     visit root_path
-    click_link('2008')
-    click_link('Lakers 88, Celtics 98')
+    click_link('2010')
+    save_and_open_page
+    click_link('Celtics 89, Lakers 102')
     select(4, from: "Rating")
     fill_in "Review", with: "This is great!"
     click_button "Submit Review"
@@ -18,8 +19,8 @@ feature "user can post review" do
   scenario "Rating is not selected and review is not saved" do
     login_as(user)
     visit root_path
-    click_link('2008')
-    click_link('Lakers 88, Celtics 98')
+    click_link('2010')
+    click_link('Celtics 89, Lakers 102')
 
     fill_in "Review", with: "This is great!"
     click_button "Submit Review"
@@ -33,8 +34,8 @@ feature "user can post review" do
   scenario "Review is not provided and review is not saved" do
     login_as(user)
     visit root_path
-    click_link('2008')
-    click_link('Lakers 88, Celtics 98')
+    click_link('2010')
+    click_link('Celtics 89, Lakers 102')
 
     select(4, from: "Rating")
     click_button "Submit Review"

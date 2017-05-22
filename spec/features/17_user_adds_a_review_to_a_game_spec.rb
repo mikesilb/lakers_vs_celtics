@@ -8,7 +8,6 @@ feature "user can post review" do
     login_as(user)
     visit root_path
     click_link('2010')
-    save_and_open_page
     click_link('Celtics 89, Lakers 102')
     select(4, from: "Rating")
     fill_in "Review", with: "This is great!"

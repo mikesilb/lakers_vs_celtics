@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def create
-    if params[:game_id] != nil
+    if !params[:game_id].nil? 
       @game = Game.find(params[:game_id])
       @nbafinal = @game.nbafinal
       @review = Review.new(review_params)

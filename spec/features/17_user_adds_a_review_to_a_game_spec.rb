@@ -2,14 +2,13 @@ require "rails_helper"
 
 feature "user can post review" do
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:nbafinal) { FactoryGirl.create(:nbafinal) }
+  let!(:game) { FactoryGirl.create(:game) }
 
-  scenario "from the nbafinal show page" do
+  scenario "from the game show page" do
     login_as(user)
     visit root_path
-    expect(page).to have_content(nbafinal.year)
-    click_link('2008')
-
+    click_link('2010')
+    click_link('Celtics 89, Lakers 102')
     select(4, from: "Rating")
     fill_in "Review", with: "This is great!"
     click_button "Submit Review"
@@ -19,10 +18,9 @@ feature "user can post review" do
   scenario "Rating is not selected and review is not saved" do
     login_as(user)
     visit root_path
+    click_link('2010')
+    click_link('Celtics 89, Lakers 102')
 
-    expect(page).to have_content(nbafinal.year)
-
-    first(:link, nbafinal.year).click
     fill_in "Review", with: "This is great!"
     click_button "Submit Review"
 
@@ -35,10 +33,9 @@ feature "user can post review" do
   scenario "Review is not provided and review is not saved" do
     login_as(user)
     visit root_path
+    click_link('2010')
+    click_link('Celtics 89, Lakers 102')
 
-    expect(page).to have_content(nbafinal.year)
-
-    first(:link, nbafinal.year).click
     select(4, from: "Rating")
     click_button "Submit Review"
 

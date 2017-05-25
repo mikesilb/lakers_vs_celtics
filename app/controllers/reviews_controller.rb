@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def create
-    if !params[:game_id].nil? 
+    if !params[:game_id].nil?
       @game = Game.find(params[:game_id])
       @nbafinal = @game.nbafinal
       @review = Review.new(review_params)
@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    # @review_ratings = Review::RATINGS
+    @review_ratings = Review::RATINGS
     if @review.update(review_params)
       flash[:success] = "Your review is successfully saved!"
       redirect_to nbafinal_path(@review.nbafinal)

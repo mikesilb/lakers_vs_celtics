@@ -44,7 +44,7 @@ feature "visitors can edit a review" do
     click_link "Edit Review"
 
     select("", from: "Rating")
-    fill_in "Review", with: "I have a new found respect for this NBA Final"
+    fill_in "Review", with: "I have a new found respect for this NBA Finals"
     click_button "Submit Review"
 
     expect(page).to have_content "Rating can't be blank"

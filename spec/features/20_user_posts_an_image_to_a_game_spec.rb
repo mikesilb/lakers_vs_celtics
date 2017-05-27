@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "user can post review" do
+feature "user can post image" do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:game) { FactoryGirl.create(:game) }
 

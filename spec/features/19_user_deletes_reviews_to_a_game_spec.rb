@@ -9,7 +9,7 @@ feature "visitors can delete their own review" do
     visit root_path
     click_link('2010')
     click_link('Celtics 89, Lakers 102')
-    select(4, from: "Rating")
+    select(5, from: "Rating")
     fill_in "Review", with: "This is great!"
     click_button "Submit Review"
     expect(page).to have_content "This is great!"

@@ -59,11 +59,19 @@ class VideosController < ApplicationController
   end
 
   def destroy
-    @nbafinal = Video.find(params[:id]).nbafinal
-    Video.find(params[:id]).destroy
-    redirect_to nbafinal_path(@nbafinal)
+    if !Video.find(params[:id]).game_id.nil?
+      @nbafinal = Video.find(params[:id]).nbafinal
+      @game_id = Video.find(params[:id]).game_id
+      Video.find(params[:id]).destroy
+      redirect_to nbafinal_game_path(@nbafinal, @game_id)
+    else
+      @nbafinal = Video.find(params[:id]).nbafinal
+      Video.find(params[:id]).destroy
+      redirect_to nbafinal_path(@nbafinal)
+    end
   end
 
+  
   private
 
   def video_params

@@ -59,9 +59,16 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    @nbafinal = Image.find(params[:id]).nbafinal
-    Image.find(params[:id]).destroy
-    redirect_to nbafinal_path(@nbafinal)
+    if !Image.find(params[:id]).game_id.nil?
+      @nbafinal = Image.find(params[:id]).nbafinal
+      @game_id = Image.find(params[:id]).game_id
+      Image.find(params[:id]).destroy
+      redirect_to nbafinal_game_path(@nbafinal, @game_id)
+    else
+      @nbafinal = Image.find(params[:id]).nbafinal
+      Image.find(params[:id]).destroy
+      redirect_to nbafinal_path(@nbafinal)
+    end
   end
 
   private

@@ -1,18 +1,36 @@
 class VideosController < ApplicationController
   def create
-    @nbafinal = Nbafinal.find(params[:nbafinal_id])
-    @video = Video.new(video_params)
-    @video.nbafinal = @nbafinal
-    @video.user = current_user
-    if @video.save
-      flash[:success] = "Your video is successfully saved!"
-    else
-      flash[:alert] = ''
-      @video.errors.full_messages.each do |m|
-        flash[:alert] += m
+    if !params[:game_id].nil?
+      @game = Game.find(params[:game_id])
+      @nbafinal = @game.nbafinal
+      @video = Video.new(video_params)
+      @video.game_id = @game.id
+      @video.nbafinal = @nbafinal
+      @video.user = current_user
+      if @video.save
+        flash[:success] = "Your video is successfully saved!"
+      else
+        flash[:alert] = ''
+        @video.errors.full_messages.each do |m|
+          flash[:alert] += m
+        end
       end
+      redirect_to nbafinal_game_path(@nbafinal, @game)
+    else
+      @nbafinal = Nbafinal.find(params[:nbafinal_id])
+      @video = Video.new(video_params)
+      @video.nbafinal = @nbafinal
+      @video.user = current_user
+      if @video.save
+        flash[:success] = "Your video is successfully saved!"
+      else
+        flash[:alert] = ''
+        @video.errors.full_messages.each do |m|
+          flash[:alert] += m
+        end
+      end
+      redirect_to nbafinal_path(@nbafinal)
     end
-    redirect_to nbafinal_path(@nbafinal)
   end
 
   def edit

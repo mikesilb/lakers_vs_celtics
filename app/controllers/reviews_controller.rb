@@ -41,12 +41,22 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review_ratings = Review::RATINGS
-    if @review.update(review_params)
-      flash[:success] = "Your review is successfully saved!"
-      redirect_to nbafinal_path(@review.nbafinal)
+    if !@review.game_id.nil?
+      if @review.update(review_params)
+        flash[:success] = "Your review is successfully saved!"
+        redirect_to nbafinal_game_path(@review.nbafinal, @review.game_id)
+      else
+        flash[:errors] = @review.errors.full_messages.to_sentence
+        render :edit
+      end
     else
-      flash[:errors] = @review.errors.full_messages.to_sentence
-      render :edit
+      if @review.update(review_params)
+        flash[:success] = "Your review is successfully saved!"
+        redirect_to nbafinal_path(@review.nbafinal)
+      else
+        flash[:errors] = @review.errors.full_messages.to_sentence
+        render :edit
+      end
     end
   end
 

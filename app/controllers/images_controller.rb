@@ -39,12 +39,22 @@ class ImagesController < ApplicationController
 
   def update
     @image = Image.find(params[:id])
-    if @image.update(image_params)
-      flash[:success] = "Your image is successfully saved!"
-      redirect_to nbafinal_path(@image.nbafinal)
+    if !@image.game_id.nil?
+      if @image.update(image_params)
+        flash[:success] = "Your image is successfully saved!"
+        redirect_to nbafinal_game_path(@image.nbafinal, @image.game_id)
+      else
+        flash[:errors] = @image.errors.full_messages.to_sentence
+        render :edit
+      end
     else
-      flash[:errors] = @image.errors.full_messages.to_sentence
-      render :edit
+      if @image.update(image_params)
+        flash[:success] = "Your image is successfully saved!"
+        redirect_to nbafinal_path(@image.nbafinal)
+      else
+        flash[:errors] = @image.errors.full_messages.to_sentence
+        render :edit
+      end
     end
   end
 

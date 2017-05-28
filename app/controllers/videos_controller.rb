@@ -39,13 +39,22 @@ class VideosController < ApplicationController
 
   def update
     @video = Video.find(params[:id])
-    # @video_ratings = Video::RATINGS
-    if @video.update(video_params)
-      flash[:success] = "Your video is successfully saved!"
-      redirect_to nbafinal_path(@video.nbafinal)
+    if !@video.game_id.nil?
+      if @video.update(video_params)
+        flash[:success] = "Your video is successfully saved!"
+        redirect_to nbafinal_game_path(@video.nbafinal, @video.game_id)
+      else
+        flash[:errors] = @video.errors.full_messages.to_sentence
+        render :edit
+      end
     else
-      flash[:errors] = @video.errors.full_messages.to_sentence
-      render :edit
+      if @video.update(video_params)
+        flash[:success] = "Your video is successfully saved!"
+        redirect_to nbafinal_path(@video.nbafinal)
+      else
+        flash[:errors] = @video.errors.full_messages.to_sentence
+        render :edit
+      end
     end
   end
 

@@ -11,7 +11,6 @@ feature "user can post video" do
     click_link('Celtics 89, Lakers 102')
     fill_in "Video", with: "https://www.youtube.com/embed/7NA8buIS_2k"
     click_button "Submit Video"
-    save_and_open_page
     expect(page).to have_content("Your video is successfully saved!")
   end
 

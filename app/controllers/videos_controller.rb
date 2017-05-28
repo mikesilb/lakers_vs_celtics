@@ -1,18 +1,36 @@
 class VideosController < ApplicationController
   def create
-    @nbafinal = Nbafinal.find(params[:nbafinal_id])
-    @video = Video.new(video_params)
-    @video.nbafinal = @nbafinal
-    @video.user = current_user
-    if @video.save
-      flash[:success] = "Your video is successfully saved!"
-    else
-      flash[:alert] = ''
-      @video.errors.full_messages.each do |m|
-        flash[:alert] += m
+    if !params[:game_id].nil?
+      @game = Game.find(params[:game_id])
+      @nbafinal = @game.nbafinal
+      @video = Video.new(video_params)
+      @video.game_id = @game.id
+      @video.nbafinal = @nbafinal
+      @video.user = current_user
+      if @video.save
+        flash[:success] = "Your video is successfully saved!"
+      else
+        flash[:alert] = ''
+        @video.errors.full_messages.each do |m|
+          flash[:alert] += m
+        end
       end
+      redirect_to nbafinal_game_path(@nbafinal, @game)
+    else
+      @nbafinal = Nbafinal.find(params[:nbafinal_id])
+      @video = Video.new(video_params)
+      @video.nbafinal = @nbafinal
+      @video.user = current_user
+      if @video.save
+        flash[:success] = "Your video is successfully saved!"
+      else
+        flash[:alert] = ''
+        @video.errors.full_messages.each do |m|
+          flash[:alert] += m
+        end
+      end
+      redirect_to nbafinal_path(@nbafinal)
     end
-    redirect_to nbafinal_path(@nbafinal)
   end
 
   def edit
@@ -21,22 +39,39 @@ class VideosController < ApplicationController
 
   def update
     @video = Video.find(params[:id])
-    # @video_ratings = Video::RATINGS
-    if @video.update(video_params)
-      flash[:success] = "Your video is successfully saved!"
-      redirect_to nbafinal_path(@video.nbafinal)
+    if !@video.game_id.nil?
+      if @video.update(video_params)
+        flash[:success] = "Your video is successfully saved!"
+        redirect_to nbafinal_game_path(@video.nbafinal, @video.game_id)
+      else
+        flash[:errors] = @video.errors.full_messages.to_sentence
+        render :edit
+      end
     else
-      flash[:errors] = @video.errors.full_messages.to_sentence
-      render :edit
+      if @video.update(video_params)
+        flash[:success] = "Your video is successfully saved!"
+        redirect_to nbafinal_path(@video.nbafinal)
+      else
+        flash[:errors] = @video.errors.full_messages.to_sentence
+        render :edit
+      end
     end
   end
 
   def destroy
-    @nbafinal = Video.find(params[:id]).nbafinal
-    Video.find(params[:id]).destroy
-    redirect_to nbafinal_path(@nbafinal)
+    if !Video.find(params[:id]).game_id.nil?
+      @nbafinal = Video.find(params[:id]).nbafinal
+      @game_id = Video.find(params[:id]).game_id
+      Video.find(params[:id]).destroy
+      redirect_to nbafinal_game_path(@nbafinal, @game_id)
+    else
+      @nbafinal = Video.find(params[:id]).nbafinal
+      Video.find(params[:id]).destroy
+      redirect_to nbafinal_path(@nbafinal)
+    end
   end
 
+  
   private
 
   def video_params

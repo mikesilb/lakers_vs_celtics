@@ -34,7 +34,7 @@ feature "visitors can edit a video" do
     visit root_path
     click_link('2010')
     click_link('Celtics 89, Lakers 102')
-    fill_in "Video", with: "http://www.eurweb.com/wp-content/uploads/2010/06/Ron-Artest.jpg"
+    fill_in "Video", with: "https://www.youtube.com/embed/7NA8buIS_2k"
     click_button "Submit Video"
     click_link "Logout"
     expect(page).to_not have_content "Edit Video"

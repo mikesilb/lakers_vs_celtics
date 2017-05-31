@@ -10,6 +10,7 @@ gem 'devise'
 gem 'rake'
 group :development, :test do
   gem 'capybara'
+  gem "dotenv-rails"
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'
@@ -27,4 +28,8 @@ end
 group :production do
   gem 'puma'
   gem 'rails_12factor'
+end
+
+group :development, :production do
+  gem 'carrierwave', '~> 1.0'
 end

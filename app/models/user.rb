@@ -10,6 +10,9 @@ class User < ApplicationRecord
     role == "admin"
   end
 
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
 end

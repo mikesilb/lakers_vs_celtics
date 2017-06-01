@@ -32,4 +32,5 @@ end
 
 group :development, :production do
   gem 'carrierwave', '~> 1.0'
+  gem "fog"
 end

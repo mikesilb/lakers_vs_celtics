@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :nbafinals do
         resources :games, only: [:index, :show, :create]
-#        resources :teams, only: [:index, :show, :create]
+        resources :teams, only: [:index, :show, :create]
       end
     end
   end
@@ -34,6 +34,10 @@ Rails.application.routes.draw do
     resources :games, only: [:show, :new, :create, :update, :destroy]
   end
 
+  resources :nbafinals do
+    resources :teams, only: [:show, :new, :create, :update, :destroy]
+  end
+  
   resources :games do
     resources :reviews, only: [:new, :create, :update, :destroy]
   end

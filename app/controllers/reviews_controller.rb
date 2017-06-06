@@ -16,6 +16,22 @@ class ReviewsController < ApplicationController
         end
       end
       redirect_to nbafinal_game_path(@nbafinal, @game)
+    elsif !params[:team_id].nil?
+      @team = Team.find(params[:team_id])
+      @nbafinal = @team.nbafinal
+      @review = Review.new(review_params)
+      @review.team_id = @team.id
+      @review.nbafinal = @nbafinal
+      @review.user = current_user
+      if @review.save
+        flash[:success] = "Your review is successfully saved!"
+      else
+        flash[:alert] = ''
+        @review.errors.full_messages.each do |m|
+          flash[:alert] += m
+        end
+      end
+      redirect_to nbafinal_team_path(@nbafinal, @team)
     else
       @nbafinal = Nbafinal.find(params[:nbafinal_id])
       @review = Review.new(review_params)

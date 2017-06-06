@@ -3,11 +3,11 @@
 <div id="hiddenfinalsshow">
   <h1><%= @nbafinal.year %></h1>
   <% if @nbafinal.champion == "Celtics" %>
-    <% team_city = "Boston" %>
+    <% champion_city = "Boston" %>
   <% else %>
-    <% team_city = "Los Angeles" %>
+    <% champion_city = "Los Angeles" %>
   <% end %>
-  <h3>The <%= team_city %> <%= @nbafinal.champion %> won the <%= @nbafinal.year %> NBA Championship in
+  <h3>The <%= champion_city %> <%= @nbafinal.champion %> won the <%= @nbafinal.year %> NBA Championship in
   <%= @nbafinal.numgames %> games. </h3>
   <% if @nbafinal.mvp != nil %>
     <h3><%= @nbafinal.mvp %> was the MVP of the series.</h3>
@@ -15,6 +15,16 @@
 </div>
 <p></p>
 <div id="gamelist">
+<h2> ||
+  <% @teams.each do | team | %>
+    <% if team.teamname == "Celtics" %>
+      <% team_city = "Boston" %>
+    <% else %>
+      <% team_city = "Los Angeles" %>
+    <% end %>
+  <%= link_to "#{team_city} #{team.teamname} ||", nbafinal_team_path(@nbafinal, team) %>
+  <% end %>
+</h2>
   <ul>
     <% @games.each_with_index do |game, index| %>
       <li>Game <%= index + 1%>: <%= link_to game.score, nbafinal_game_path(@nbafinal, game) %></li>

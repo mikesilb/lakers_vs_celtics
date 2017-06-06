@@ -119,6 +119,9 @@ div#gamelist a {
   text-decoration: none;
 }
 
+div#gamelist h2 {
+  text-align: center;
+}
 
 div#userlink{
   margin-bottom: 20px;
@@ -246,6 +249,21 @@ input.button {
   font-family: Roboto;
   width: 700px;
   text-align: left;
+  background-color: black;
+  border-radius: 10px;
+  opacity: 0.85;
+  padding: 0 5px;
+  z-index: 100;
+  margin-top: 50px;
+  margin-left: 5%
+}
+
+#team-heading {
+  border: 2px solid lightgrey;
+  color: #ff8103;
+  font-family: Roboto;
+  width: 700px;
+  text-align: center;
   background-color: black;
   border-radius: 10px;
   opacity: 0.85;

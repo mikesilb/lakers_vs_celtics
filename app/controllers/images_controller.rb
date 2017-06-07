@@ -88,6 +88,11 @@ class ImagesController < ApplicationController
       @game_id = Image.find(params[:id]).game_id
       Image.find(params[:id]).destroy
       redirect_to nbafinal_game_path(@nbafinal, @game_id)
+    elsif !Image.find(params[:id]).team_id.nil?
+      @nbafinal = Image.find(params[:id]).nbafinal
+      @team_id = Image.find(params[:id]).team_id
+      Image.find(params[:id]).destroy
+      redirect_to nbafinal_team_path(@nbafinal, @team_id)
     else
       @nbafinal = Image.find(params[:id]).nbafinal
       Image.find(params[:id]).destroy

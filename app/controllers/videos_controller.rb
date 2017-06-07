@@ -63,6 +63,14 @@ class VideosController < ApplicationController
         flash[:errors] = @video.errors.full_messages.to_sentence
         render :edit
       end
+    elsif !@video.team_id.nil?
+      if @video.update(video_params)
+        flash[:success] = "Your video is successfully saved!"
+        redirect_to nbafinal_team_path(@video.nbafinal, @video.team_id)
+      else
+        flash[:errors] = @video.errors.full_messages.to_sentence
+        render :edit
+      end
     else
       if @video.update(video_params)
         flash[:success] = "Your video is successfully saved!"

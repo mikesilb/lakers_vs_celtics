@@ -65,6 +65,14 @@ class ReviewsController < ApplicationController
         flash[:errors] = @review.errors.full_messages.to_sentence
         render :edit
       end
+    elsif !@review.team_id.nil?
+        if @review.update(review_params)
+          flash[:success] = "Your review is successfully saved!"
+          redirect_to nbafinal_team_path(@review.nbafinal, @review.team_id)
+        else
+          flash[:errors] = @review.errors.full_messages.to_sentence
+          render :edit
+        end
     else
       if @review.update(review_params)
         flash[:success] = "Your review is successfully saved!"
@@ -82,6 +90,11 @@ class ReviewsController < ApplicationController
       @game_id = Review.find(params[:id]).game_id
       Review.find(params[:id]).destroy
       redirect_to nbafinal_game_path(@nbafinal, @game_id)
+    elsif !Review.find(params[:id]).team_id.nil?
+      @nbafinal = Review.find(params[:id]).nbafinal
+      @team_id = Review.find(params[:id]).team_id
+      Review.find(params[:id]).destroy
+      redirect_to nbafinal_team_path(@nbafinal, @team_id)
     else
       @nbafinal = Review.find(params[:id]).nbafinal
       Review.find(params[:id]).destroy

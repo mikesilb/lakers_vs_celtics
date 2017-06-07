@@ -16,6 +16,22 @@ class ImagesController < ApplicationController
         end
       end
       redirect_to nbafinal_game_path(@nbafinal, @game)
+    elsif !params[:team_id].nil?
+      @team = Team.find(params[:team_id])
+      @nbafinal = @team.nbafinal
+      @image = Image.new(image_params)
+      @image.team_id = @team.id
+      @image.nbafinal = @nbafinal
+      @image.user = current_user
+      if @image.save
+        flash[:success] = "Your image is successfully saved!"
+      else
+        flash[:alert] = ''
+        @image.errors.full_messages.each do |m|
+          flash[:alert] += m
+        end
+      end
+      redirect_to nbafinal_team_path(@nbafinal, @team)
     else
       @nbafinal = Nbafinal.find(params[:nbafinal_id])
       @image = Image.new(image_params)
@@ -47,6 +63,14 @@ class ImagesController < ApplicationController
         flash[:errors] = @image.errors.full_messages.to_sentence
         render :edit
       end
+    elsif !@image.team_id.nil?
+      if @image.update(image_params)
+        flash[:success] = "Your image is successfully saved!"
+        redirect_to nbafinal_team_path(@image.nbafinal, @image.team_id)
+      else
+        flash[:errors] = @image.errors.full_messages.to_sentence
+        render :edit
+      end
     else
       if @image.update(image_params)
         flash[:success] = "Your image is successfully saved!"
@@ -64,6 +88,11 @@ class ImagesController < ApplicationController
       @game_id = Image.find(params[:id]).game_id
       Image.find(params[:id]).destroy
       redirect_to nbafinal_game_path(@nbafinal, @game_id)
+    elsif !Image.find(params[:id]).team_id.nil?
+      @nbafinal = Image.find(params[:id]).nbafinal
+      @team_id = Image.find(params[:id]).team_id
+      Image.find(params[:id]).destroy
+      redirect_to nbafinal_team_path(@nbafinal, @team_id)
     else
       @nbafinal = Image.find(params[:id]).nbafinal
       Image.find(params[:id]).destroy

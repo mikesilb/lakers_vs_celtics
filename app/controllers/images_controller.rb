@@ -63,6 +63,14 @@ class ImagesController < ApplicationController
         flash[:errors] = @image.errors.full_messages.to_sentence
         render :edit
       end
+    elsif !@image.team_id.nil?
+      if @image.update(image_params)
+        flash[:success] = "Your image is successfully saved!"
+        redirect_to nbafinal_team_path(@image.nbafinal, @image.team_id)
+      else
+        flash[:errors] = @image.errors.full_messages.to_sentence
+        render :edit
+      end
     else
       if @image.update(image_params)
         flash[:success] = "Your image is successfully saved!"

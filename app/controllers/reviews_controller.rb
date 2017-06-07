@@ -65,6 +65,14 @@ class ReviewsController < ApplicationController
         flash[:errors] = @review.errors.full_messages.to_sentence
         render :edit
       end
+    elsif !@review.team_id.nil?
+        if @review.update(review_params)
+          flash[:success] = "Your review is successfully saved!"
+          redirect_to nbafinal_team_path(@review.nbafinal, @review.team_id)
+        else
+          flash[:errors] = @review.errors.full_messages.to_sentence
+          render :edit
+        end
     else
       if @review.update(review_params)
         flash[:success] = "Your review is successfully saved!"

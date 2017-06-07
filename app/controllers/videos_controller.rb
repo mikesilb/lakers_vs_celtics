@@ -16,6 +16,22 @@ class VideosController < ApplicationController
         end
       end
       redirect_to nbafinal_game_path(@nbafinal, @game)
+    elsif !params[:team_id].nil?
+      @team = Team.find(params[:team_id])
+      @nbafinal = @team.nbafinal
+      @video = Video.new(video_params)
+      @video.team_id = @team.id
+      @video.nbafinal = @nbafinal
+      @video.user = current_user
+      if @video.save
+        flash[:success] = "Your video is successfully saved!"
+      else
+        flash[:alert] = ''
+        @video.errors.full_messages.each do |m|
+          flash[:alert] += m
+        end
+      end
+      redirect_to nbafinal_team_path(@nbafinal, @team)
     else
       @nbafinal = Nbafinal.find(params[:nbafinal_id])
       @video = Video.new(video_params)
@@ -71,7 +87,7 @@ class VideosController < ApplicationController
     end
   end
 
-  
+
   private
 
   def video_params

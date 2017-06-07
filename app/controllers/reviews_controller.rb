@@ -90,6 +90,11 @@ class ReviewsController < ApplicationController
       @game_id = Review.find(params[:id]).game_id
       Review.find(params[:id]).destroy
       redirect_to nbafinal_game_path(@nbafinal, @game_id)
+    elsif !Review.find(params[:id]).team_id.nil?
+      @nbafinal = Review.find(params[:id]).nbafinal
+      @team_id = Review.find(params[:id]).team_id
+      Review.find(params[:id]).destroy
+      redirect_to nbafinal_team_path(@nbafinal, @team_id)
     else
       @nbafinal = Review.find(params[:id]).nbafinal
       Review.find(params[:id]).destroy

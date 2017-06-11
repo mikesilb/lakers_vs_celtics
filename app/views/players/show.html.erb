@@ -1,26 +1,13 @@
-<div id="team-heading">
+<div id="player-heading">
   <h1>
-  <% if @team.teamname == "Celtics" %>
-    <% team_city = "Boston" %>
-  <% else %>
-    <% team_city = "Los Angeles" %>
-  <% end %>
-  The <%= @team.nbafinal.year %> <%= team_city %> <%= @team.teamname %>
-</h1>
-</div>
-
-<div id="playerlist">
-  <ul>
-    <% @players.each do |player| %>
-      <li><%= link_to "#{player.firstname} #{player.lastname}", team_player_path(@team, player) %></li>
-    <% end %>
-  </ul>
+    <%= @player.firstname %> <%= @player.lastname %>
+  </h1>
 </div>
 
   <div class="reviewform">
     <% if user_signed_in? %>
       <h3>Add a review:</h3>
-      <%= form_for [ @team, @review ] do |f| %>
+      <%= form_for [ @player, @review ] do |f| %>
         <div class="field">
           <%= f.label :rating %>
           <%= f.select :rating, @review_ratings %>
@@ -41,7 +28,7 @@
   <div class="imageform">
     <% if user_signed_in? %>
       <h3>Add an image:</h3>
-      <%= form_for [ @team, @image ] do |f| %>
+      <%= form_for [ @player, @image ] do |f| %>
         <div class="field">
           <%= f.label :image, "Image" %>
           <%= f.text_area :image %>
@@ -56,7 +43,7 @@
   <div class="videoform">
     <% if user_signed_in? %>
       <h3>Add a video:</h3>
-      <%= form_for [ @team, @video ] do |f| %>
+      <%= form_for [ @player, @video ] do |f| %>
         <div class="field">
           <%= f.label :video, "Video" %>
           <%= f.text_area :video %>
@@ -70,7 +57,7 @@
   </div>
   <div class=videolist>
     <h4>Videos</h4>
-      <% @team.videos.each do |video| %>
+      <% @player.videos.each do |video| %>
         <% if user_signed_in? %>
           <% if current_user == video.user %>
             <%= link_to "Edit Video", edit_video_path(video) %>
@@ -91,7 +78,7 @@
     </div>
 <div class=imagelist>
   <h4>Images</h4>
-    <% @team.images.each do |image| %>
+    <% @player.images.each do |image| %>
       <% if user_signed_in? %>
         <% if current_user == image.user %>
           <%= link_to "Edit Image", edit_image_path(image) %>
@@ -112,7 +99,7 @@
   </div>
   <div class=reviewlist>
   <h4>Reviews</h4>
-    <% @team.reviews.each do |review| %>
+    <% @player.reviews.each do |review| %>
       <% if user_signed_in? %>
         <% if current_user == review.user %>
           <%= link_to "Edit Review", edit_review_path(review) %>

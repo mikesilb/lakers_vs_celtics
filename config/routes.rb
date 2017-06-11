@@ -11,6 +11,9 @@ Rails.application.routes.draw do
         resources :games, only: [:index, :show, :create]
         resources :teams, only: [:index, :show, :create]
       end
+      resources :teams do
+        resources :players, only: [:index, :show, :create]
+      end
     end
   end
 
@@ -37,7 +40,7 @@ Rails.application.routes.draw do
   resources :nbafinals do
     resources :teams, only: [:show, :new, :create, :update, :destroy]
   end
-  
+
   resources :games do
     resources :reviews, only: [:new, :create, :update, :destroy]
   end
@@ -58,6 +61,19 @@ Rails.application.routes.draw do
     resources :videos, only: [:new, :create, :update, :destroy]
   end
 
+  resources :teams do
+    resources :players, only: [:show, :new, :create, :update, :destroy]
+  end
+
+  resources :players do
+    resources :reviews, only: [:new, :create, :update, :destroy]
+  end
+  resources :players do
+    resources :images, only: [:new, :create, :update, :destroy]
+  end
+  resources :players do
+    resources :videos, only: [:new, :create, :update, :destroy]
+  end
   resources :reviews, only: [:edit, :update, :destroy]
   resources :images, only: [:edit, :update, :destroy]
   resources :videos, only: [:edit, :update, :destroy]

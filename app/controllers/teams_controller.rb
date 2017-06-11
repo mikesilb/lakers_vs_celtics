@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
+    @players = Player.where(team_id: @team)
     @reviews = @team.reviews
     @review = Review.new
     @image = Image.new

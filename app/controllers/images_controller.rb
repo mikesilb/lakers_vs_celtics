@@ -5,7 +5,6 @@ class ImagesController < ApplicationController
       @nbafinal = @game.nbafinal
       @image = Image.new(image_params)
       @image.game_id = @game.id
-      # @image.nbafinal = @nbafinal
       @image.user = current_user
       if @image.save
         flash[:success] = "Your image is successfully saved!"
@@ -18,10 +17,8 @@ class ImagesController < ApplicationController
       redirect_to game_path(@image.game_id)
     elsif !params[:team_id].nil?
       @team = Team.find(params[:team_id])
-      # @nbafinal = @team.nbafinal
       @image = Image.new(image_params)
       @image.team_id = @team.id
-      # @image.nbafinal = @nbafinal
       @image.user = current_user
       if @image.save
         flash[:success] = "Your image is successfully saved!"
@@ -84,12 +81,10 @@ class ImagesController < ApplicationController
 
   def destroy
     if !Image.find(params[:id]).game_id.nil?
-      # @nbafinal = Image.find(params[:id]).nbafinal
       @game_id = Image.find(params[:id]).game_id
       Image.find(params[:id]).destroy
       redirect_to game_path(@game_id)
     elsif !Image.find(params[:id]).team_id.nil?
-      # @nbafinal = Image.find(params[:id]).nbafinal
       @team_id = Image.find(params[:id]).team_id
       Image.find(params[:id]).destroy
       redirect_to team_path(@team_id)

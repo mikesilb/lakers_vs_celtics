@@ -8,20 +8,20 @@ describe Image do
   it "is valid with valid attribute" do
     subject.image = "http://i.cdn.turner.com/nba/nba/2009/images/06/18/portrait608.jpg"
     subject.user = mike
-    subject.nbafinal = nbafinal
+    subject.nbafinal_id = nbafinal
     expect(subject).to be_valid
   end
 
   it "is not valid without image" do
     subject.user = mike
-    subject.nbafinal = nbafinal
+    subject.nbafinal_id = nbafinal
     expect(subject).to_not be_valid
   end
 
   it "is not valid with invalid attribute" do
     subject.image = "http://i.cdn.turner.com/nba/nba/2009/images/06/18/portrait608jpg"
     subject.user = mike
-    subject.nbafinal = nbafinal
+    subject.nbafinal_id = nbafinal
     expect(subject).to_not be_valid
   end
 end

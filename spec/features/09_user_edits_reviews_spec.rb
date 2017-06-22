@@ -6,7 +6,6 @@ feature "visitors can edit a review" do
   let!(:review) { FactoryGirl.create(:review, user: user, nbafinal_id: nbafinal) }
 
   scenario "from a link on the nbafinal show page if logged in" do
-
     login_as(user)
     visit root_path
     click_link('2008')

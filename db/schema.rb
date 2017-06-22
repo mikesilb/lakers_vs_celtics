@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170610205226) do
+ActiveRecord::Schema.define(version: 20170620212456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,12 @@ ActiveRecord::Schema.define(version: 20170610205226) do
   create_table "images", force: :cascade do |t|
     t.string   "image",       null: false
     t.integer  "user_id"
-    t.integer  "nbafinal_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "nbafinal_id"
     t.integer  "game_id"
     t.integer  "team_id"
     t.integer  "player_id"
-    t.index ["nbafinal_id"], name: "index_images_on_nbafinal_id", using: :btree
     t.index ["user_id"], name: "index_images_on_user_id", using: :btree
   end
 
@@ -59,13 +58,12 @@ ActiveRecord::Schema.define(version: 20170610205226) do
     t.integer  "rating",      null: false
     t.text     "body",        null: false
     t.integer  "user_id"
-    t.integer  "nbafinal_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "nbafinal_id"
     t.integer  "game_id"
     t.integer  "team_id"
     t.integer  "player_id"
-    t.index ["nbafinal_id"], name: "index_reviews_on_nbafinal_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
@@ -99,23 +97,13 @@ ActiveRecord::Schema.define(version: 20170610205226) do
   create_table "videos", force: :cascade do |t|
     t.string   "video",       null: false
     t.integer  "user_id"
-    t.integer  "nbafinal_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "nbafinal_id"
     t.integer  "game_id"
     t.integer  "team_id"
     t.integer  "player_id"
-    t.index ["nbafinal_id"], name: "index_videos_on_nbafinal_id", using: :btree
     t.index ["user_id"], name: "index_videos_on_user_id", using: :btree
   end
 
-  add_foreign_key "images", "games"
-  add_foreign_key "images", "players"
-  add_foreign_key "images", "teams"
-  add_foreign_key "reviews", "games"
-  add_foreign_key "reviews", "players"
-  add_foreign_key "reviews", "teams"
-  add_foreign_key "videos", "games"
-  add_foreign_key "videos", "players"
-  add_foreign_key "videos", "teams"
 end

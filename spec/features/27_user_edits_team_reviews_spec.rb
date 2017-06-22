@@ -30,6 +30,9 @@ feature "visitors can edit a review" do
     fill_in "Review", with: "I have a new found respect for this particular game"
     click_button "Submit Review"
 
+
+
+
     expect(page).to have_content "I have a new found respect for this particular game"
     expect(page).to have_content "Your review is successfully saved!"
     expect(page).to_not have_content "This just makes me sad."

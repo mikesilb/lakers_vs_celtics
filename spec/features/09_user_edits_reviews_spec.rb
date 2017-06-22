@@ -3,13 +3,16 @@ require "rails_helper"
 feature "visitors can edit a review" do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:nbafinal) { FactoryGirl.create(:nbafinal) }
-  let!(:review) { FactoryGirl.create(:review, user: user, nbafinal: nbafinal) }
+  let!(:review) { FactoryGirl.create(:review, user: user, nbafinal_id: nbafinal) }
 
   scenario "from a link on the nbafinal show page if logged in" do
+
     login_as(user)
     visit root_path
-
-    first(:link, nbafinal.year).click
+    click_link('2008')
+    select(4, from: "Rating")
+    fill_in "Review", with: "This is great!"
+    click_button "Submit Review"
     click_on "Edit Review"
     expect(page).to have_content "Edit Review"
   end
@@ -17,11 +20,12 @@ feature "visitors can edit a review" do
   scenario "and successfully update the database and be redirected to the show page" do
     login_as(user)
     visit root_path
-
-    first(:link, nbafinal.year).click
-    click_link "Edit Review"
-
+    click_link('2008')
     select(4, from: "Rating")
+    fill_in "Review", with: "This is great!"
+    click_button "Submit Review"
+    click_on "Edit Review"
+    select(5, from: "Rating")
     fill_in "Review", with: "I have a new found respect for this NBA Finals"
     click_button "Submit Review"
 
@@ -38,11 +42,11 @@ feature "visitors can edit a review" do
   scenario "and should be shown error message if updated review has no rating" do
     login_as(user)
     visit root_path
-
-    first(:link, nbafinal.year).click
-
-    click_link "Edit Review"
-
+    click_link('2008')
+    select(4, from: "Rating")
+    fill_in "Review", with: "This is great!"
+    click_button "Submit Review"
+    click_on "Edit Review"
     select("", from: "Rating")
     fill_in "Review", with: "I have a new found respect for this NBA Finals"
     click_button "Submit Review"
@@ -56,12 +60,12 @@ feature "visitors can edit a review" do
   scenario "and should be shown error message if updated review has no body" do
     login_as(user)
     visit root_path
-
-    first(:link, nbafinal.year).click
-
-    click_link "Edit Review"
-
+    click_link('2008')
     select(4, from: "Rating")
+    fill_in "Review", with: "This is great!"
+    click_button "Submit Review"
+    click_on "Edit Review"
+    select(5, from: "Rating")
     fill_in "Review", with: ""
     click_button "Submit Review"
 

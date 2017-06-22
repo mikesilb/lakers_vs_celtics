@@ -10,7 +10,7 @@ describe Review do
     subject.rating = 3
     subject.body = "The NBA Finals was amazing."
     subject.user = mike
-    subject.nbafinal = nbafinal
+    subject.nbafinal_id = nbafinal
     expect(subject).to be_valid
   end
 
@@ -18,20 +18,18 @@ describe Review do
     subject.rating = 3
     subject.body = "The NBA Finals was amazing."
     subject.user = mike
-    subject.nbafinal = nbafinal
     subject.game_id = game
     expect(subject).to be_valid
   end
 
   it "is not valid without rating and body for an NBA Finals" do
     subject.user = mike
-    subject.nbafinal = nbafinal
+    subject.nbafinal_id = nbafinal
     expect(subject).to_not be_valid
   end
 
   it "is not valid without rating and body for a specific game" do
     subject.user = mike
-    subject.nbafinal = nbafinal
     subject.game_id = game
     expect(subject).to_not be_valid
   end
@@ -40,14 +38,13 @@ describe Review do
     subject.rating = 7
     subject.body = "The NBA Finals was amazing."
     subject.user = mike
-    subject.nbafinal = nbafinal
+    subject.nbafinal_id = nbafinal
     expect(subject).to_not be_valid
   end
   it "is not valid with wrong rating for a specific game" do
     subject.rating = 7
     subject.body = "This game was amazing."
     subject.user = mike
-    subject.nbafinal = nbafinal
     subject.game_id = game
     expect(subject).to_not be_valid
   end

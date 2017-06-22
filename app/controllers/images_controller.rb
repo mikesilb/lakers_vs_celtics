@@ -5,7 +5,7 @@ class ImagesController < ApplicationController
       @nbafinal = @game.nbafinal
       @image = Image.new(image_params)
       @image.game_id = @game.id
-      @image.nbafinal = @nbafinal
+      # @image.nbafinal = @nbafinal
       @image.user = current_user
       if @image.save
         flash[:success] = "Your image is successfully saved!"
@@ -15,13 +15,13 @@ class ImagesController < ApplicationController
           flash[:alert] += m
         end
       end
-      redirect_to nbafinal_game_path(@nbafinal, @game)
+      redirect_to game_path(@image.game_id)
     elsif !params[:team_id].nil?
       @team = Team.find(params[:team_id])
-      @nbafinal = @team.nbafinal
+      # @nbafinal = @team.nbafinal
       @image = Image.new(image_params)
       @image.team_id = @team.id
-      @image.nbafinal = @nbafinal
+      # @image.nbafinal = @nbafinal
       @image.user = current_user
       if @image.save
         flash[:success] = "Your image is successfully saved!"
@@ -31,11 +31,11 @@ class ImagesController < ApplicationController
           flash[:alert] += m
         end
       end
-      redirect_to nbafinal_team_path(@nbafinal, @team)
+      redirect_to team_path(@image.team_id)
     else
       @nbafinal = Nbafinal.find(params[:nbafinal_id])
       @image = Image.new(image_params)
-      @image.nbafinal = @nbafinal
+      @image.nbafinal_id = @nbafinal.id
       @image.user = current_user
       if @image.save
         flash[:success] = "Your image is successfully saved!"
@@ -58,7 +58,7 @@ class ImagesController < ApplicationController
     if !@image.game_id.nil?
       if @image.update(image_params)
         flash[:success] = "Your image is successfully saved!"
-        redirect_to nbafinal_game_path(@image.nbafinal, @image.game_id)
+        redirect_to game_path(@image.game_id)
       else
         flash[:errors] = @image.errors.full_messages.to_sentence
         render :edit
@@ -66,7 +66,7 @@ class ImagesController < ApplicationController
     elsif !@image.team_id.nil?
       if @image.update(image_params)
         flash[:success] = "Your image is successfully saved!"
-        redirect_to nbafinal_team_path(@image.nbafinal, @image.team_id)
+        redirect_to team_path(@image.team_id)
       else
         flash[:errors] = @image.errors.full_messages.to_sentence
         render :edit
@@ -84,19 +84,19 @@ class ImagesController < ApplicationController
 
   def destroy
     if !Image.find(params[:id]).game_id.nil?
-      @nbafinal = Image.find(params[:id]).nbafinal
+      # @nbafinal = Image.find(params[:id]).nbafinal
       @game_id = Image.find(params[:id]).game_id
       Image.find(params[:id]).destroy
-      redirect_to nbafinal_game_path(@nbafinal, @game_id)
+      redirect_to game_path(@game_id)
     elsif !Image.find(params[:id]).team_id.nil?
-      @nbafinal = Image.find(params[:id]).nbafinal
+      # @nbafinal = Image.find(params[:id]).nbafinal
       @team_id = Image.find(params[:id]).team_id
       Image.find(params[:id]).destroy
-      redirect_to nbafinal_team_path(@nbafinal, @team_id)
+      redirect_to team_path(@team_id)
     else
-      @nbafinal = Image.find(params[:id]).nbafinal
+      @nbafinal_id = Image.find(params[:id]).nbafinal_id
       Image.find(params[:id]).destroy
-      redirect_to nbafinal_path(@nbafinal)
+      redirect_to nbafinal_path(@nbafinal_id)
     end
   end
 

@@ -8,20 +8,17 @@ describe Video do
   it "is valid with valid attribute" do
     subject.video = "https://www.youtube.com/embed/uqf13CnVVSo"
     subject.user = mike
-    subject.nbafinal = nbafinal
     expect(subject).to be_valid
   end
 
-  it "is not valid without image" do
+  it "is not valid without video" do
     subject.user = mike
-    subject.nbafinal = nbafinal
     expect(subject).to_not be_valid
   end
 
   it "is not valid with invalid attribute" do
     subject.video = "https://wwwyoutube.com/embed/uqf13CnVVSo"
     subject.user = mike
-    subject.nbafinal = nbafinal
     expect(subject).to_not be_valid
   end
 end

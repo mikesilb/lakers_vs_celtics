@@ -5,7 +5,6 @@ class VideosController < ApplicationController
       @nbafinal = @game.nbafinal
       @video = Video.new(video_params)
       @video.game_id = @game.id
-      @video.nbafinal = @nbafinal
       @video.user = current_user
       if @video.save
         flash[:success] = "Your video is successfully saved!"
@@ -15,13 +14,11 @@ class VideosController < ApplicationController
           flash[:alert] += m
         end
       end
-      redirect_to nbafinal_game_path(@nbafinal, @game)
+      redirect_to game_path(@video.game_id)
     elsif !params[:team_id].nil?
       @team = Team.find(params[:team_id])
-      @nbafinal = @team.nbafinal
       @video = Video.new(video_params)
       @video.team_id = @team.id
-      @video.nbafinal = @nbafinal
       @video.user = current_user
       if @video.save
         flash[:success] = "Your video is successfully saved!"
@@ -31,11 +28,11 @@ class VideosController < ApplicationController
           flash[:alert] += m
         end
       end
-      redirect_to nbafinal_team_path(@nbafinal, @team)
+      redirect_to team_path(@video.team_id)
     else
       @nbafinal = Nbafinal.find(params[:nbafinal_id])
       @video = Video.new(video_params)
-      @video.nbafinal = @nbafinal
+      @video.nbafinal_id = @nbafinal.id
       @video.user = current_user
       if @video.save
         flash[:success] = "Your video is successfully saved!"
@@ -45,7 +42,7 @@ class VideosController < ApplicationController
           flash[:alert] += m
         end
       end
-      redirect_to nbafinal_path(@nbafinal)
+      redirect_to nbafinal_path(@video.nbafinal_id)
     end
   end
 
@@ -58,7 +55,7 @@ class VideosController < ApplicationController
     if !@video.game_id.nil?
       if @video.update(video_params)
         flash[:success] = "Your video is successfully saved!"
-        redirect_to nbafinal_game_path(@video.nbafinal, @video.game_id)
+        redirect_to game_path(@video.game_id)
       else
         flash[:errors] = @video.errors.full_messages.to_sentence
         render :edit
@@ -66,7 +63,7 @@ class VideosController < ApplicationController
     elsif !@video.team_id.nil?
       if @video.update(video_params)
         flash[:success] = "Your video is successfully saved!"
-        redirect_to nbafinal_team_path(@video.nbafinal, @video.team_id)
+        redirect_to team_path(@video.team_id)
       else
         flash[:errors] = @video.errors.full_messages.to_sentence
         render :edit
@@ -74,7 +71,7 @@ class VideosController < ApplicationController
     else
       if @video.update(video_params)
         flash[:success] = "Your video is successfully saved!"
-        redirect_to nbafinal_path(@video.nbafinal)
+        redirect_to nbafinal_path(@video.nbafinal_id)
       else
         flash[:errors] = @video.errors.full_messages.to_sentence
         render :edit
@@ -84,19 +81,17 @@ class VideosController < ApplicationController
 
   def destroy
     if !Video.find(params[:id]).game_id.nil?
-      @nbafinal = Video.find(params[:id]).nbafinal
       @game_id = Video.find(params[:id]).game_id
       Video.find(params[:id]).destroy
-      redirect_to nbafinal_game_path(@nbafinal, @game_id)
+      redirect_to game_path(@game_id)
     elsif !Video.find(params[:id]).team_id.nil?
-      @nbafinal = Video.find(params[:id]).nbafinal
       @team_id = Video.find(params[:id]).team_id
       Video.find(params[:id]).destroy
-      redirect_to nbafinal_team_path(@nbafinal, @team_id)
+      redirect_to team_path(@team_id)
     else
-      @nbafinal = Video.find(params[:id]).nbafinal
+      @nbafinal_id = Video.find(params[:id]).nbafinal_id
       Video.find(params[:id]).destroy
-      redirect_to nbafinal_path(@nbafinal)
+      redirect_to nbafinal_path(@nbafinal_id)
     end
   end
 

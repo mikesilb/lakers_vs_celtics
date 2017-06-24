@@ -15,7 +15,21 @@ class ImagesController < ApplicationController
         end
       end
       redirect_to game_path(@image.game_id)
-    elsif !params[:team_id].nil?
+    elsif !params[:player_id].nil? && params[:team_id].nil?
+      @player = Player.find(params[:player_id])
+      @image = Image.new(image_params)
+      @image.player_id = @player.id
+      @image.user = current_user
+      if @image.save
+        flash[:success] = "Your image is successfully saved!"
+      else
+        flash[:alert] = ''
+        @image.errors.full_messages.each do |m|
+          flash[:alert] += m
+        end
+      end
+      redirect_to player_path(@image.player_id)
+    elsif !params[:team_id].nil? && params[:player_id].nil?
       @team = Team.find(params[:team_id])
       @image = Image.new(image_params)
       @image.team_id = @team.id
@@ -60,7 +74,15 @@ class ImagesController < ApplicationController
         flash[:errors] = @image.errors.full_messages.to_sentence
         render :edit
       end
-    elsif !@image.team_id.nil?
+    elsif !@image.player_id.nil?
+      if @image.update(image_params)
+        flash[:success] = "Your image is successfully saved!"
+        redirect_to player_path(@image.player_id)
+      else
+        flash[:errors] = @image.errors.full_messages.to_sentence
+        render :edit
+      end
+    elsif !@image.team_id.nil? && @review.player_id.nil?
       if @image.update(image_params)
         flash[:success] = "Your image is successfully saved!"
         redirect_to team_path(@image.team_id)

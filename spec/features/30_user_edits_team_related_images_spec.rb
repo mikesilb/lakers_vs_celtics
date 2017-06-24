@@ -15,7 +15,7 @@ feature "visitors can edit a image" do
     expect(page).to have_content "Edit Image"
   end
 
-  scenario "and successfully update the database and be redirected to the game show page" do
+  scenario "and successfully update the database and be redirected to the team show page" do
     login_as(user)
     visit root_path
     click_link('2010')

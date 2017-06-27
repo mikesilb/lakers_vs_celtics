@@ -29,6 +29,20 @@ class VideosController < ApplicationController
         end
       end
       redirect_to team_path(@video.team_id)
+    elsif !params[:player_id].nil? && params[:team_id].nil?
+      @player = Player.find(params[:player_id])
+      @video = Video.new(video_params)
+      @video.player_id = @player.id
+      @video.user = current_user
+      if @video.save
+        flash[:success] = "Your video is successfully saved!"
+      else
+        flash[:alert] = ''
+        @video.errors.full_messages.each do |m|
+          flash[:alert] += m
+        end
+      end
+      redirect_to player_path(@video.player_id)
     else
       @nbafinal = Nbafinal.find(params[:nbafinal_id])
       @video = Video.new(video_params)

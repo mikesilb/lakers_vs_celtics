@@ -110,6 +110,10 @@ class VideosController < ApplicationController
       @team_id = Video.find(params[:id]).team_id
       Video.find(params[:id]).destroy
       redirect_to team_path(@team_id)
+    elsif !Video.find(params[:id]).player_id.nil?
+      @player_id = Video.find(params[:id]).player_id
+      Video.find(params[:id]).destroy
+      redirect_to player_path(@player_id)
     else
       @nbafinal_id = Video.find(params[:id]).nbafinal_id
       Video.find(params[:id]).destroy

@@ -2,6 +2,8 @@
   <h1>
   <% if @team.teamname == "Celtics" %>
     <% team_city = "Boston" %>
+  <% elsif @team.teamname == "Lakers" && @team.nbafinal.year == 1959 %>
+    <% team_city = "Minneapolis" %>
   <% else %>
     <% team_city = "Los Angeles" %>
   <% end %>

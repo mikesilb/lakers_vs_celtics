@@ -19,8 +19,9 @@
   </ul>
 </div>
 
-  <div class="reviewform">
+
     <% if user_signed_in? %>
+    <div class="reviewform">
       <h3>Add a review:</h3>
       <%= form_for [ @team, @review ] do |f| %>
         <div class="field">
@@ -40,8 +41,9 @@
     <% end %>
   </div>
 
-  <div class="imageform">
+
     <% if user_signed_in? %>
+      <div class="imageform">
       <h3>Add an image:</h3>
       <%= form_for [ @team, @image ] do |f| %>
         <div class="field">
@@ -55,8 +57,9 @@
       <% end %>
     <% end %>
   </div>
-  <div class="videoform">
+
     <% if user_signed_in? %>
+      <div class="videoform">
       <h3>Add a video:</h3>
       <%= form_for [ @team, @video ] do |f| %>
         <div class="field">
